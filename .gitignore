@@ -4,14 +4,22 @@ backend/venv/
 # Python cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# SQLite database
+backend/db.sqlite3
+
+# Django collected static files
+backend/staticfiles/
 
 # React dependencies
 frontend/node_modules/
 
 # React build
 frontend/dist/
-
-# Environment variables
-.env
-.env.local
-.env.*.local
