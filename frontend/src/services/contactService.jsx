@@ -1,7 +1,7 @@
 import axios from "axios"
 
 function handleMessage(data){
-return axios.post("http://127.0.0.1:8000/contact/",data)
+return axios.post(`${import.meta.env.VITE_API_URL}/contact/`,data)
  .then((response)=>{
     return response.data
  })
