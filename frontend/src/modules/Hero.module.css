@@ -5,17 +5,17 @@
   display: flex;
   align-items: center;
 
+  padding: 140px 0 100px;
+
   overflow: hidden;
 
-  padding: 150px 0 100px;
-
-  background: #09090b;
-  color: #ffffff;
+  background: #0a0a0a;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-/* =========================
-   BACKGROUND
-========================= */
+/* ================================
+   Background Grid
+================================ */
 
 .grid {
   position: absolute;
@@ -23,12 +23,12 @@
 
   background-image:
     linear-gradient(
-      rgba(255, 255, 255, 0.025) 1px,
+      rgba(255, 255, 255, 0.035) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.025) 1px,
+      rgba(255, 255, 255, 0.035) 1px,
       transparent 1px
     );
 
@@ -36,22 +36,21 @@
 
   mask-image: linear-gradient(
     to bottom,
-    black 0%,
-    rgba(0, 0, 0, 0.5) 60%,
-    transparent 100%
+    black,
+    transparent 85%
   );
+
+  pointer-events: none;
 }
 
 .glow {
   position: absolute;
 
-  width: 700px;
-  height: 700px;
+  top: 15%;
+  right: 8%;
 
-  top: 50%;
-  left: 58%;
-
-  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
 
   border-radius: 50%;
 
@@ -62,96 +61,114 @@
   pointer-events: none;
 }
 
-/* =========================
-   CONTAINER
-========================= */
+/* ================================
+   Container
+================================ */
 
 .container {
   position: relative;
   z-index: 2;
 
-  width: min(1120px, calc(100% - 40px));
-  margin: 0 auto;
-
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.85fr);
 
   align-items: center;
-  gap: 80px;
+
+  gap: 90px;
+
+  width: min(1180px, calc(100% - 48px));
+
+  margin: 0 auto;
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* ================================
+   Content
+================================ */
 
 .content {
-  max-width: 650px;
+  max-width: 680px;
 }
+
+/* ================================
+   Eyebrow
+================================ */
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 9px;
 
-  margin-bottom: 25px;
+  margin-bottom: 28px;
 
-  color: #a1a1aa;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.42);
 }
 
 .statusDot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 
   border-radius: 50%;
 
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.75);
 
   box-shadow:
-    0 0 0 4px rgba(255, 255, 255, 0.07),
-    0 0 16px rgba(255, 255, 255, 0.4);
+    0 0 0 4px rgba(255, 255, 255, 0.05),
+    0 0 14px rgba(255, 255, 255, 0.25);
 }
 
-.title {
-  max-width: 700px;
+/* ================================
+   Title
+================================ */
 
+.title {
   margin: 0;
 
-  font-size: clamp(52px, 6vw, 82px);
+  max-width: 760px;
+
+  font-size: clamp(58px, 6.5vw, 92px);
   line-height: 0.98;
 
-  font-weight: 700;
-  letter-spacing: -4px;
+  font-weight: 400;
+
+  letter-spacing: -0.065em;
+
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .title span {
-  color: #71717a;
+  color: rgba(255, 255, 255, 0.35);
 }
+
+/* ================================
+   Description
+================================ */
 
 .description {
   max-width: 570px;
 
-  margin: 30px 0 0;
+  margin: 32px 0 0;
 
-  color: #a1a1aa;
+  font-size: 15px;
+  line-height: 1.8;
 
-  font-size: 17px;
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.46);
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* ================================
+   Actions
+================================ */
 
 .actions {
   display: flex;
   align-items: center;
   gap: 12px;
 
-  margin-top: 35px;
+  margin-top: 36px;
 }
 
 .primaryButton,
@@ -160,10 +177,12 @@
   align-items: center;
   justify-content: center;
 
+  min-height: 46px;
+
   text-decoration: none;
 
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
 
   transition:
     transform 0.25s ease,
@@ -172,23 +191,29 @@
 }
 
 .primaryButton {
-  gap: 10px;
+  gap: 12px;
 
-  padding: 13px 18px;
+  padding: 0 18px;
 
-  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
 
-  background: #ffffff;
-  color: #09090b;
+  background: rgba(255, 255, 255, 0.08);
+
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .primaryButton span {
-  font-size: 17px;
+  font-size: 15px;
 
   transition: transform 0.25s ease;
 }
 
 .primaryButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+
+  border-color: rgba(255, 255, 255, 0.25);
+
   transform: translateY(-2px);
 }
 
@@ -197,34 +222,31 @@
 }
 
 .secondaryButton {
-  padding: 13px 18px;
+  padding: 0 18px;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-
-  color: #d4d4d8;
-  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.42);
 }
 
 .secondaryButton:hover {
-  transform: translateY(-2px);
+  color: rgba(255, 255, 255, 0.9);
 
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
 }
 
-/* =========================
-   TECH STACK
-========================= */
+/* ================================
+   Tech Stack
+================================ */
 
 .techStack {
-  margin-top: 55px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
 
-  color: #52525b;
+  margin-top: 65px;
 
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
+  font-size: 10px;
+
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .techList {
@@ -232,85 +254,78 @@
   align-items: center;
   gap: 10px;
 
-  margin-top: 11px;
-
-  color: #71717a;
-
-  font-size: 12px;
-  letter-spacing: 0;
-
-  text-transform: none;
+  color: rgba(255, 255, 255, 0.4);
 }
 
-/* =========================
-   VISUAL
-========================= */
+/* ================================
+   Visual
+================================ */
 
 .visual {
   position: relative;
 
-  min-height: 480px;
-
   display: flex;
   align-items: center;
   justify-content: center;
+
+  min-height: 520px;
 }
 
 .visualGlow {
   position: absolute;
 
-  width: 350px;
-  height: 350px;
+  width: 380px;
+  height: 380px;
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(255, 255, 255, 0.035);
 
   filter: blur(80px);
 }
 
-/* =========================
-   CODE CARD
-========================= */
+/* ================================
+   Code Card
+================================ */
 
 .codeCard {
   position: relative;
   z-index: 2;
 
-  width: min(470px, 100%);
-
-  overflow: hidden;
+  width: min(100%, 500px);
 
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  border-radius: 15px;
 
-  background: rgba(17, 17, 20, 0.82);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.012)
+    );
 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    0 30px 80px rgba(0, 0, 0, 0.4);
 
-  transform: rotate(1.5deg);
-
-  transition: transform 0.4s ease;
+  overflow: hidden;
 }
 
-.codeCard:hover {
-  transform: rotate(0deg) translateY(-5px);
-}
-
-/* Card header */
+/* ================================
+   Card Header
+================================ */
 
 .cardHeader {
   display: flex;
   align-items: center;
 
-  padding: 15px 18px;
+  height: 48px;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0 18px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .windowDots {
@@ -324,29 +339,34 @@
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .fileName {
   margin-left: auto;
   margin-right: auto;
 
-  color: #71717a;
-
   font-family: monospace;
-  font-size: 11px;
+  font-size: 10px;
+
+  color: rgba(255, 255, 255, 0.3);
 }
 
-/* Code */
+/* ================================
+   Code
+================================ */
 
 .code {
-  padding: 28px 20px;
+  padding: 28px 24px;
 
-  color: #71717a;
-
-  font-family: "SFMono-Regular", Consolas, monospace;
+  font-family: monospace;
   font-size: 12px;
-  line-height: 2.25;
+
+  line-height: 2;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  white-space: nowrap;
 }
 
 .lineNumber {
@@ -354,44 +374,43 @@
 
   width: 32px;
 
-  margin-right: 15px;
+  margin-right: 14px;
 
-  color: #3f3f46;
-
-  user-select: none;
-  text-align: right;
+  color: rgba(255, 255, 255, 0.16);
 }
 
 .keyword {
-  color: #a1a1aa;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .variable {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .property {
-  color: #d4d4d8;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .string {
-  color: #8f8f96;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* Footer */
+/* ================================
+   Card Footer
+================================ */
 
 .cardFooter {
   display: flex;
   align-items: center;
   gap: 8px;
 
-  padding: 13px 18px;
+  padding: 15px 20px;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
 
-  color: #52525b;
+  font-size: 9px;
 
-  font-size: 10px;
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .footerIndicator {
@@ -400,214 +419,196 @@
 
   border-radius: 50%;
 
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.6);
 }
 
-/* =========================
-   FLOATING CARD
-========================= */
+/* ================================
+   Floating Card
+================================ */
 
 .floatingCard {
   position: absolute;
 
   right: -15px;
-  bottom: 45px;
+  bottom: 50px;
 
   z-index: 3;
 
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 12px;
 
-  padding: 12px 15px;
+  padding: 14px 16px;
 
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  border-radius: 10px;
 
-  background: rgba(24, 24, 27, 0.9);
+  background: rgba(10, 10, 10, 0.82);
 
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-
-  animation: float 4s ease-in-out infinite;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
 .floatingIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 17px;
 
-  width: 30px;
-  height: 30px;
-
-  border-radius: 8px;
-
-  background: rgba(255, 255, 255, 0.08);
-
-  color: #ffffff;
-
-  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .floatingCard div {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .floatingCard strong {
-  color: #e4e4e7;
-
   font-size: 11px;
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.floatingCard span:last-child {
-  color: #71717a;
-
+.floatingCard span:not(.floatingIcon) {
   font-size: 9px;
+
+  color: rgba(255, 255, 255, 0.3);
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-/* =========================
-   SCROLL INDICATOR
-========================= */
+/* ================================
+   Scroll Indicator
+================================ */
 
 .scrollIndicator {
   position: absolute;
-  bottom: 28px;
+
+  bottom: 35px;
   left: 50%;
 
   z-index: 3;
 
   display: flex;
   align-items: center;
-  gap: 10px;
-
-  transform: translateX(-50%);
-
-  color: #52525b;
+  gap: 12px;
 
   text-decoration: none;
 
-  font-size: 10px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+
+  color: rgba(255, 255, 255, 0.25);
+
+  transform: translateX(-50%);
 }
 
 .scrollArrow {
-  font-size: 14px;
+  font-size: 15px;
 
-  animation: scroll 1.8s ease-in-out infinite;
+  animation: scrollDown 1.8s ease-in-out infinite;
 }
 
-@keyframes scroll {
+@keyframes scrollDown {
   0%,
   100% {
     transform: translateY(0);
   }
 
   50% {
-    transform: translateY(4px);
+    transform: translateY(5px);
   }
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ================================
+   Large Desktop
+================================ */
 
-@media (max-width: 900px) {
-  .hero {
-    padding-top: 130px;
-  }
-
+@media (min-width: 1400px) {
   .container {
-    grid-template-columns: 1fr;
-    gap: 70px;
+    gap: 120px;
   }
 
-  .content {
-    max-width: 720px;
+  .title {
+    font-size: 92px;
   }
 
   .visual {
-    min-height: 400px;
-  }
-
-  .title {
-    font-size: clamp(48px, 9vw, 72px);
-  }
-
-  .floatingCard {
-    right: 0;
+    min-height: 580px;
   }
 }
 
-@media (max-width: 600px) {
+/* ================================
+   Tablet / Small Desktop
+================================ */
+
+@media (max-width: 1050px) {
   .hero {
-    min-height: auto;
-    padding: 120px 0 80px;
+    padding-top: 120px;
   }
 
   .container {
-    width: min(100% - 28px, 1120px);
+    grid-template-columns: 1fr 0.85fr;
+
+    gap: 45px;
   }
 
   .title {
-    font-size: clamp(42px, 13vw, 60px);
-    letter-spacing: -2.8px;
+    font-size: clamp(52px, 6vw, 72px);
   }
 
   .description {
-    font-size: 15px;
-  }
-
-  .actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .primaryButton,
-  .secondaryButton {
-    width: 100%;
-  }
-
-  .techStack {
-    margin-top: 40px;
-  }
-
-  .techList {
-    flex-wrap: wrap;
+    font-size: 14px;
   }
 
   .visual {
-    min-height: 330px;
-  }
-
-  .code {
-    padding: 20px 10px;
-
-    font-size: 9px;
-  }
-
-  .lineNumber {
-    width: 22px;
-    margin-right: 8px;
+    min-height: 440px;
   }
 
   .floatingCard {
     right: -5px;
-    bottom: 15px;
+  }
+}
+
+/* ================================
+   Tablet
+================================ */
+
+@media (max-width: 850px) {
+  .hero {
+    min-height: auto;
+
+    padding: 130px 0 100px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+
+    gap: 70px;
+  }
+
+  .content {
+    max-width: 700px;
+  }
+
+  .title {
+    max-width: 700px;
+
+    font-size: clamp(52px, 9vw, 76px);
+  }
+
+  .visual {
+    width: 100%;
+    min-height: 450px;
+  }
+
+  .codeCard {
+    width: min(100%, 560px);
+  }
+
+  .floatingCard {
+    right: calc(50% - 300px);
   }
 
   .scrollIndicator {
@@ -615,3 +616,188 @@
   }
 }
 
+/* ================================
+   Mobile
+================================ */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 110px 0 70px;
+  }
+
+  .container {
+    width: min(100% - 32px, 1180px);
+
+    gap: 55px;
+  }
+
+  .eyebrow {
+    margin-bottom: 22px;
+
+    font-size: 9px;
+  }
+
+  .title {
+    font-size: clamp(44px, 13vw, 62px);
+
+    line-height: 1;
+  }
+
+  .description {
+    margin-top: 24px;
+
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .actions {
+    margin-top: 30px;
+
+    gap: 6px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 44px;
+
+    font-size: 11px;
+  }
+
+  .primaryButton {
+    padding: 0 15px;
+  }
+
+  .secondaryButton {
+    padding: 0 14px;
+  }
+
+  .techStack {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-top: 45px;
+  }
+
+  .techList {
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    font-size: 11px;
+  }
+
+  .visual {
+    min-height: 330px;
+  }
+
+  .visualGlow {
+    width: 280px;
+    height: 280px;
+
+    filter: blur(70px);
+  }
+
+  .codeCard {
+    width: 100%;
+
+    border-radius: 12px;
+  }
+
+  .cardHeader {
+    height: 44px;
+
+    padding: 0 14px;
+  }
+
+  .code {
+    padding: 22px 14px;
+
+    font-size: 9px;
+
+    line-height: 2;
+  }
+
+  .lineNumber {
+    width: 22px;
+
+    margin-right: 8px;
+  }
+
+  .cardFooter {
+    padding: 13px 14px;
+
+    font-size: 8px;
+  }
+
+  .floatingCard {
+    right: -5px;
+    bottom: -15px;
+
+    padding: 11px 13px;
+
+    gap: 9px;
+  }
+
+  .floatingIcon {
+    font-size: 14px;
+  }
+
+  .floatingCard strong {
+    font-size: 9px;
+  }
+
+  .floatingCard span:not(.floatingIcon) {
+    font-size: 7px;
+  }
+}
+
+/* ================================
+   Small Phones
+================================ */
+
+@media (max-width: 380px) {
+  .hero {
+    padding-top: 100px;
+  }
+
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .title {
+    font-size: 42px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+  }
+
+  .techList {
+    font-size: 10px;
+  }
+
+  .visual {
+    min-height: 280px;
+  }
+
+  .code {
+    padding: 18px 10px;
+
+    font-size: 7.5px;
+  }
+
+  .lineNumber {
+    width: 18px;
+
+    margin-right: 5px;
+  }
+
+  .floatingCard {
+    right: -2px;
+  }
+}
