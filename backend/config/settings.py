@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 CORS_ALLOWED_ORIGINS=[
     "http://localhost:5173",
-    "https://portfolio-one-eta-os3yxibvj3.vercel.app"
+    "https://portfolio-8z7a26u2j-kalam1010hj-art.vercel.app"
     
 ]
 ALLOWED_HOSTS = [
