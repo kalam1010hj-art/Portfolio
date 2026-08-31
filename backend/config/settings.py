@@ -29,7 +29,8 @@ DEBUG = False
 CORS_ALLOWED_ORIGINS=[
     "http://localhost:5173",
     "https://portfolio-8z7a26u2j-kalam1010hj-art.vercel.app",
-    "https://portfolio-bp6k-lhppumwq3-kalam1010hj-art.vercel.app"
+    "https://portfolio-bp6k-lhppumwq3-kalam1010hj-art.vercel.app",
+    "https://portfolio-bp6k.vercel.app/"
     
 ]
 ALLOWED_HOSTS = [
