@@ -1,32 +1,61 @@
+/* =================================
+   ABOUT
+================================= */
+
 .about {
   position: relative;
 
   padding: 140px 0;
 
-  background: #0a0a0a;
-
-  color: rgba(255, 255, 255, 0.9);
+  background: #11161d;
+  color: #f3f6fa;
 
   overflow: hidden;
 }
 
-/* ================================
+/* Subtle background glow */
+
+.about::before {
+  content: "";
+
+  position: absolute;
+
+  top: 20%;
+  right: -180px;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  background: rgba(94, 167, 255, 0.035);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+/* =================================
    Container
-================================ */
+================================= */
 
 .container {
+  position: relative;
+  z-index: 1;
+
   width: min(1180px, calc(100% - 48px));
 
   margin: 0 auto;
 }
 
-/* ================================
+/* =================================
    Heading
-================================ */
+================================= */
 
 .heading {
   display: flex;
   flex-direction: column;
+
   gap: 25px;
 
   margin-bottom: 90px;
@@ -37,9 +66,10 @@
   font-weight: 600;
 
   letter-spacing: 0.16em;
+
   text-transform: uppercase;
 
-  color: rgba(255, 255, 255, 0.3);
+  color: #6f7b89;
 }
 
 .heading h2 {
@@ -48,36 +78,39 @@
   max-width: 800px;
 
   font-size: clamp(52px, 6vw, 82px);
+
   line-height: 1;
 
   font-weight: 400;
 
   letter-spacing: -0.065em;
 
-  color: rgba(255, 255, 255, 0.92);
+  color: #f3f6fa;
 }
 
 .heading h2 span {
-  color: rgba(255, 255, 255, 0.3);
+  color: #5ea7ff;
 }
 
-/* ================================
+/* =================================
    Main Content
-================================ */
+================================= */
 
 .content {
   display: grid;
 
-  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  grid-template-columns:
+    minmax(0, 1.1fr)
+    minmax(360px, 0.9fr);
 
   gap: 100px;
 
   align-items: start;
 }
 
-/* ================================
+/* =================================
    Intro
-================================ */
+================================= */
 
 .intro {
   max-width: 650px;
@@ -87,31 +120,33 @@
   margin: 0 0 25px;
 
   font-size: 14px;
+
   line-height: 1.9;
 
-  color: rgba(255, 255, 255, 0.4);
+  color: #8995a4;
 }
 
 .intro .lead {
   margin-bottom: 32px;
 
   font-size: 18px;
+
   line-height: 1.75;
 
-  color: rgba(255, 255, 255, 0.72);
+  color: #c1cad5;
 
   letter-spacing: -0.015em;
 }
 
-/* ================================
+/* =================================
    Highlights
-================================ */
+================================= */
 
 .highlights {
   display: flex;
   flex-direction: column;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 .highlight {
@@ -121,37 +156,46 @@
 
   gap: 20px;
 
-  padding: 28px 0;
+  padding: 28px 18px;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+
+  border-radius: 4px;
 
   transition:
+    background 0.3s ease,
     padding-left 0.3s ease,
-    background 0.3s ease;
+    border-color 0.3s ease;
 }
 
 .highlight:hover {
-  padding-left: 8px;
+  padding-left: 24px;
+
+  background: rgba(94, 167, 255, 0.035);
+
+  border-color: rgba(94, 167, 255, 0.18);
 }
 
 .number {
   padding-top: 3px;
 
   font-size: 9px;
+
   font-weight: 600;
 
   letter-spacing: 0.1em;
 
-  color: rgba(255, 255, 255, 0.22);
+  color: #4d5967;
 }
 
 .highlight h3 {
   margin: 0 0 8px;
 
   font-size: 14px;
+
   font-weight: 500;
 
-  color: rgba(255, 255, 255, 0.78);
+  color: #dce3eb;
 }
 
 .highlight p {
@@ -160,14 +204,15 @@
   margin: 0;
 
   font-size: 11px;
+
   line-height: 1.7;
 
-  color: rgba(255, 255, 255, 0.32);
+  color: #758190;
 }
 
-/* ================================
+/* =================================
    Bottom
-================================ */
+================================= */
 
 .bottom {
   display: flex;
@@ -182,21 +227,22 @@
   width: 55px;
   height: 1px;
 
-  background: rgba(255, 255, 255, 0.2);
+  background: #5ea7ff;
 }
 
 .bottom p {
   margin: 0;
 
   font-size: 10px;
+
   letter-spacing: 0.04em;
 
-  color: rgba(255, 255, 255, 0.25);
+  color: #697686;
 }
 
-/* ================================
+/* =================================
    Large Desktop
-================================ */
+================================= */
 
 @media (min-width: 1400px) {
   .about {
@@ -208,9 +254,9 @@
   }
 }
 
-/* ================================
+/* =================================
    Tablet / Small Desktop
-================================ */
+================================= */
 
 @media (max-width: 1000px) {
   .about {
@@ -236,9 +282,9 @@
   }
 }
 
-/* ================================
+/* =================================
    Tablet
-================================ */
+================================= */
 
 @media (max-width: 800px) {
   .about {
@@ -272,13 +318,30 @@
   }
 }
 
-/* ================================
+/* =================================
    Mobile
-================================ */
+================================= */
 
 @media (max-width: 600px) {
   .about {
-    padding: 80px 0;
+    padding: 85px 0;
+
+    background:
+      linear-gradient(
+        180deg,
+        #11161d 0%,
+        #131920 100%
+      );
+  }
+
+  .about::before {
+    width: 280px;
+    height: 280px;
+
+    top: 15%;
+    right: -150px;
+
+    filter: blur(80px);
   }
 
   .container {
@@ -299,6 +362,8 @@
     font-size: clamp(42px, 12vw, 58px);
 
     line-height: 1.02;
+
+    letter-spacing: -0.055em;
   }
 
   .content {
@@ -309,6 +374,7 @@
     margin-bottom: 25px;
 
     font-size: 15px;
+
     line-height: 1.75;
   }
 
@@ -316,7 +382,16 @@
     margin-bottom: 20px;
 
     font-size: 12px;
+
     line-height: 1.8;
+  }
+
+  /* Highlights become cards */
+
+  .highlights {
+    gap: 10px;
+
+    border-top: none;
   }
 
   .highlight {
@@ -324,20 +399,46 @@
 
     gap: 12px;
 
-    padding: 22px 0;
+    padding: 20px 16px;
+
+    border:
+      1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .highlight:hover {
+    padding-left: 20px;
+
+    background: rgba(94, 167, 255, 0.045);
+
+    border-color: rgba(94, 167, 255, 0.18);
   }
 
   .number {
+    padding-top: 3px;
+
     font-size: 8px;
+
+    color: #536070;
   }
 
   .highlight h3 {
+    margin-bottom: 7px;
+
     font-size: 13px;
+
+    color: #dce3eb;
   }
 
   .highlight p {
     font-size: 10px;
+
     line-height: 1.65;
+
+    color: #7d8997;
   }
 
   .bottom {
@@ -358,13 +459,14 @@
 
   .bottom p {
     font-size: 9px;
+
     line-height: 1.6;
   }
 }
 
-/* ================================
+/* =================================
    Small Phones
-================================ */
+================================= */
 
 @media (max-width: 380px) {
   .about {
@@ -388,7 +490,7 @@
   }
 
   .highlight {
-    padding: 19px 0;
+    padding: 18px 14px;
   }
 
   .highlight h3 {

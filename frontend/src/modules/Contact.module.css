@@ -1,21 +1,59 @@
-    .contact {
+/* =================================
+   CONTACT
+================================= */
+
+.contact {
   position: relative;
+
   padding: 140px 0 100px;
-  background: #0a0a0a;
+
+  background: #11161d;
+
+  color: #f3f6fa;
+
+  overflow: hidden;
+}
+
+/* subtle blue atmosphere */
+
+.contact::before {
+  content: "";
+
+  position: absolute;
+
+  top: 10%;
+  left: -220px;
+
+  width: 480px;
+  height: 480px;
+
+  border-radius: 50%;
+
+  background: rgba(94, 167, 255, 0.035);
+
+  filter: blur(120px);
+
+  pointer-events: none;
 }
 
 .container {
+  position: relative;
+  z-index: 1;
+
   width: min(1180px, calc(100% - 48px));
+
   margin: 0 auto;
 }
 
-/* ================================
-   Header
-================================ */
+/* =================================
+   HEADER
+================================= */
 
 .header {
   display: grid;
+
   grid-template-columns: 180px 1fr;
+
   gap: 60px;
 
   margin-bottom: 90px;
@@ -24,12 +62,15 @@
 .label {
   padding-top: 12px;
 
-  font-size: 11px;
+  font-size: 10px;
+
   font-weight: 600;
+
   letter-spacing: 0.16em;
+
   text-transform: uppercase;
 
-  color: rgba(255, 255, 255, 0.4);
+  color: #697686;
 }
 
 .headingContent h2 {
@@ -38,15 +79,18 @@
   max-width: 700px;
 
   font-size: clamp(48px, 7vw, 86px);
+
   line-height: 0.98;
+
   font-weight: 400;
+
   letter-spacing: -0.055em;
 
-  color: rgba(255, 255, 255, 0.95);
+  color: #f3f6fa;
 }
 
 .headingContent h2 span {
-  color: rgba(255, 255, 255, 0.35);
+  color: #5ea7ff;
 }
 
 .headingContent p {
@@ -55,28 +99,31 @@
   margin: 30px 0 0;
 
   font-size: 15px;
+
   line-height: 1.8;
 
-  color: rgba(255, 255, 255, 0.48);
+  color: #8995a4;
 }
 
-/* ================================
-   Main Grid
-================================ */
+/* =================================
+   MAIN GRID
+================================= */
 
 .contactGrid {
   display: grid;
+
   grid-template-columns: 0.85fr 1.15fr;
+
   gap: 100px;
 
   padding-top: 50px;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
 }
 
-/* ================================
-   Intro
-================================ */
+/* =================================
+   INTRO
+================================= */
 
 .intro {
   padding-top: 8px;
@@ -87,26 +134,31 @@
 
   margin-bottom: 24px;
 
-  font-size: 10px;
+  font-size: 9px;
+
   font-weight: 600;
+
   letter-spacing: 0.18em;
 
-  color: rgba(255, 255, 255, 0.35);
+  color: #6f7b89;
 }
 
 .intro h3 {
   margin: 0;
 
   font-size: clamp(28px, 3vw, 42px);
+
   line-height: 1.08;
+
   font-weight: 400;
+
   letter-spacing: -0.04em;
 
-  color: rgba(255, 255, 255, 0.9);
+  color: #e9eef5;
 }
 
 .intro h3 span {
-  color: rgba(255, 255, 255, 0.3);
+  color: #5ea7ff;
 }
 
 .intro > p {
@@ -114,32 +166,35 @@
 
   margin: 28px 0 42px;
 
-  font-size: 14px;
+  font-size: 13px;
+
   line-height: 1.8;
 
-  color: rgba(255, 255, 255, 0.45);
+  color: #7f8b99;
 }
 
-/* ================================
-   Email
-================================ */
+/* =================================
+   EMAIL
+================================= */
 
 .email {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   width: min(100%, 420px);
 
   padding-bottom: 16px;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
 
   text-decoration: none;
 
-  font-size: 15px;
+  font-size: 14px;
 
-  color: rgba(255, 255, 255, 0.85);
+  color: #c7d0da;
 
   transition:
     color 0.25s ease,
@@ -147,42 +202,51 @@
 }
 
 .emailArrow {
-  font-size: 18px;
+  font-size: 17px;
 
-  transition: transform 0.25s ease;
+  color: #697686;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .email:hover {
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.4);
+  color: #f3f6fa;
+
+  border-color: rgba(94, 167, 255, 0.45);
 }
 
 .email:hover .emailArrow {
+  color: #5ea7ff;
+
   transform: translate(3px, -3px);
 }
 
-/* ================================
-   Socials
-================================ */
+/* =================================
+   SOCIALS
+================================= */
 
 .socials {
   display: flex;
+
   gap: 28px;
 
-  margin-top: 32px;
+  margin-top: 30px;
 }
 
 .socials a {
   display: flex;
+
   align-items: center;
+
   gap: 7px;
 
   text-decoration: none;
 
-  font-size: 12px;
-  letter-spacing: 0.03em;
+  font-size: 11px;
 
-  color: rgba(255, 255, 255, 0.45);
+  color: #788594;
 
   transition: color 0.25s ease;
 }
@@ -194,50 +258,65 @@
 }
 
 .socials a:hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: #5ea7ff;
 }
 
 .socials a:hover span {
   transform: translate(2px, -2px);
 }
 
-/* ================================
-   Form
-================================ */
+/* =================================
+   FORM WRAPPER
+================================= */
 
 .formWrapper {
-  padding: 42px;
+  padding: 28px 32px;
 
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.045),
-      rgba(255, 255, 255, 0.012)
+      rgba(27, 35, 45, 0.9),
+      rgba(19, 25, 33, 0.82)
     );
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.2);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 24px;
 }
+
+/* =================================
+   INPUTS
+================================= */
 
 .inputGroup {
   display: flex;
+
   flex-direction: column;
-  gap: 12px;
+
+  gap: 11px;
 }
 
 .inputGroup label {
-  font-size: 10px;
+  font-size: 9px;
+
   font-weight: 600;
+
   letter-spacing: 0.15em;
+
   text-transform: uppercase;
 
-  color: rgba(255, 255, 255, 0.38);
+  color: #758190;
 }
 
 .inputGroup input,
@@ -247,21 +326,26 @@
   padding: 14px 0;
 
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+
   outline: none;
 
   background: transparent;
 
-  color: rgba(255, 255, 255, 0.9);
+  color: #e9eef5;
 
   font-family: inherit;
-  font-size: 15px;
 
-  transition: border-color 0.25s ease;
+  font-size: 14px;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .inputGroup textarea {
-  min-height: 120px;
+  min-height: 90px;
 
   resize: vertical;
 
@@ -270,105 +354,259 @@
 
 .inputGroup input::placeholder,
 .inputGroup textarea::placeholder {
-  color: rgba(255, 255, 255, 0.22);
+  color: #536070;
 }
 
 .inputGroup input:focus,
 .inputGroup textarea:focus {
-  border-color: rgba(255, 255, 255, 0.55);
+  border-color: #5ea7ff;
+
+  box-shadow: 0 1px 0 rgba(94, 167, 255, 0.2);
 }
 
-/* ================================
-   Submit Button
-================================ */
+/* =================================
+   SUBMIT BUTTON
+================================= */
 
 .submitButton {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   width: 100%;
 
-  margin-top: 4px;
-  padding: 17px 20px;
+  margin-top: 3px;
 
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 9px;
+  padding: 16px 18px;
 
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(94, 167, 255, 0.4);
 
-  color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+
+  background: #5ea7ff;
+
+  color: #08111d;
 
   font-family: inherit;
-  font-size: 13px;
-  font-weight: 500;
+
+  font-size: 12px;
+
+  font-weight: 600;
 
   cursor: pointer;
 
   transition:
-    background 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.3s ease;
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .buttonArrow {
-  font-size: 17px;
+  font-size: 16px;
 
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
 }
 
 .submitButton:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: #7ab8ff;
+
+  border-color: #7ab8ff;
 
   transform: translateY(-2px);
+
+  box-shadow: 0 10px 30px rgba(94, 167, 255, 0.12);
 }
 
 .submitButton:hover .buttonArrow {
   transform: translate(3px, -3px);
 }
 
-/* ================================
-   Bottom
-================================ */
+/* =================================
+   STATUS MESSAGES
+================================= */
+
+.successMessage,
+.errorMessage,
+.validationMessage {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 13px;
+
+    margin: 0 0 2px;
+
+  padding: 14px 15px;
+
+  border-radius: 9px;
+
+  animation: messageAppear 0.35s ease forwards;
+}
+
+.successMessage {
+  border: 1px solid rgba(94, 220, 160, 0.2);
+
+  background: rgba(94, 220, 160, 0.055);
+}
+
+.errorMessage {
+  border: 1px solid rgba(255, 107, 107, 0.2);
+
+  background: rgba(255, 107, 107, 0.055);
+}
+
+.validationMessage {
+  border: 1px solid rgba(255, 190, 90, 0.2);
+
+  background: rgba(255, 190, 90, 0.055);
+}
+
+.messageIcon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 27px;
+  height: 27px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.successMessage .messageIcon {
+  border: 1px solid rgba(94, 220, 160, 0.3);
+
+  background: rgba(94, 220, 160, 0.09);
+
+  color: #8de7b7;
+}
+
+.errorMessage .messageIcon,
+.validationMessage .messageIcon {
+  border: 1px solid rgba(255, 150, 150, 0.25);
+
+  background: rgba(255, 150, 150, 0.08);
+
+  color: #ff9292;
+}
+
+.validationMessage .messageIcon {
+  border-color: rgba(255, 200, 110, 0.3);
+
+  background: rgba(255, 200, 110, 0.08);
+
+  color: #ffc875;
+}
+
+.messageLabel {
+  display: block;
+
+  margin-bottom: 3px;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.09em;
+
+  text-transform: uppercase;
+}
+
+.successMessage .messageLabel {
+  color: #8de7b7;
+}
+
+.errorMessage .messageLabel {
+  color: #ff9292;
+}
+
+.validationMessage .messageLabel {
+  color: #ffc875;
+}
+
+.successMessage p,
+.errorMessage p,
+.validationMessage p {
+  margin: 0;
+
+  font-size: 11px;
+
+  line-height: 1.55;
+
+  color: #7f8b99;
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =================================
+   BOTTOM
+================================= */
 
 .bottom {
   display: flex;
-  align-items: center;
-  gap: 20px;
 
-  margin-top: 70px;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-top: 65px;
 }
 
 .line {
-  width: 55px;
+  width: 45px;
+
   height: 1px;
 
-  background: rgba(255, 255, 255, 0.18);
+  background: #5ea7ff;
 }
 
 .bottom p {
   margin: 0;
 
-  font-size: 11px;
+  font-size: 10px;
+
   letter-spacing: 0.04em;
 
-  color: rgba(255, 255, 255, 0.3);
+  color: #697686;
 }
 
-/* ================================
-   Responsive
-================================ */
+/* =================================
+   TABLET
+================================= */
 
 @media (max-width: 850px) {
   .header {
     grid-template-columns: 1fr;
+
     gap: 20px;
   }
 
   .contactGrid {
     grid-template-columns: 1fr;
-    gap: 70px;
+
+    gap: 65px;
   }
 
   .formWrapper {
@@ -376,184 +614,224 @@
   }
 }
 
+/* =================================
+   MOBILE
+================================= */
+
 @media (max-width: 600px) {
   .contact {
-    padding: 100px 0 70px;
+    padding: 90px 0 70px;
   }
 
   .container {
-    width: min(100% - 32px, 1180px);
+    width: calc(100% - 32px);
   }
 
   .header {
-    margin-bottom: 60px;
+    margin-bottom: 55px;
+  }
+
+  .label {
+    font-size: 9px;
   }
 
   .headingContent h2 {
-    font-size: clamp(42px, 13vw, 64px);
+    font-size: clamp(42px, 12.5vw, 60px);
+
+    line-height: 1.02;
+
+    letter-spacing: -0.055em;
   }
 
   .headingContent p {
-    margin-top: 22px;
-    font-size: 14px;
+    margin-top: 20px;
+
+    font-size: 13px;
+
+    line-height: 1.75;
   }
 
   .contactGrid {
-    padding-top: 35px;
-    gap: 55px;
+    gap: 48px;
+
+    padding-top: 32px;
+  }
+
+  .intro {
+    padding-top: 0;
+  }
+
+  .introLabel {
+    margin-bottom: 20px;
+
+    font-size: 8px;
   }
 
   .intro h3 {
-    font-size: 30px;
+    font-size: 29px;
   }
 
+  .intro > p {
+    margin: 22px 0 30px;
+
+    font-size: 12px;
+
+    line-height: 1.75;
+  }
+
+  .email {
+    width: 100%;
+
+    padding-bottom: 13px;
+
+    font-size: 12px;
+  }
+
+  .socials {
+    gap: 22px;
+
+    margin-top: 25px;
+  }
+
+  .socials a {
+    font-size: 10px;
+  }
+
+  /* =================================
+     FORM
+  ================================= */
+
   .formWrapper {
-    padding: 24px;
-    border-radius: 14px;
+    padding: 22px;
+
+    border-radius: 13px;
   }
 
   .form {
-    gap: 28px;
+    gap: 27px;
+  }
+
+  .inputGroup {
+    gap: 9px;
+  }
+
+  .inputGroup label {
+    font-size: 8px;
+  }
+
+  .inputGroup input,
+  .inputGroup textarea {
+    padding: 12px 0;
+
+    font-size: 13px;
+  }
+
+  .inputGroup textarea {
+    min-height: 105px;
+  }
+
+  .submitButton {
+    min-height: 46px;
+
+    padding: 14px 16px;
+
+    font-size: 11px;
+  }
+
+  /* =================================
+     STATUS MESSAGE
+  ================================= */
+
+  .successMessage,
+  .errorMessage,
+  .validationMessage {
+    gap: 10px;
+
+    margin: -3px 0 0;
+
+    padding: 12px;
+  }
+
+  .messageIcon {
+    width: 25px;
+    height: 25px;
+
+    font-size: 11px;
+  }
+
+  .messageLabel {
+    font-size: 8px;
+  }
+
+  .successMessage p,
+  .errorMessage p,
+  .validationMessage p {
+    font-size: 10px;
+
+    line-height: 1.5;
   }
 
   .bottom {
-    margin-top: 50px;
-  }
-}
-/* ================================
-   Form Status Messages
-================================ */
+    align-items: flex-start;
 
-.successMessage,
-.errorMessage {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
+    gap: 12px;
 
-  margin-bottom: 30px;
-  padding: 16px 18px;
-
-  border-radius: 10px;
-
-  animation: messageAppear 0.35s ease forwards;
-}
-
-.successMessage {
-  border: 1px solid rgba(120, 220, 160, 0.16);
-
-  background: rgba(120, 220, 160, 0.045);
-}
-
-.errorMessage {
-  border: 1px solid rgba(255, 107, 107, 0.16);
-
-  background: rgba(255, 107, 107, 0.045);
-}
-
-.messageIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 28px;
-  height: 28px;
-
-  flex-shrink: 0;
-
-  border-radius: 50%;
-
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.successMessage .messageIcon {
-  border: 1px solid rgba(120, 220, 160, 0.25);
-
-  background: rgba(120, 220, 160, 0.08);
-
-  color: rgba(150, 235, 180, 0.9);
-}
-
-.errorMessage .messageIcon {
-  border: 1px solid rgba(255, 107, 107, 0.25);
-
-  background: rgba(255, 107, 107, 0.08);
-
-  color: rgba(255, 130, 130, 0.9);
-}
-
-.messageLabel {
-  display: block;
-
-  margin-bottom: 4px;
-
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.successMessage .messageLabel {
-  color: rgba(150, 235, 180, 0.9);
-}
-
-.errorMessage .messageLabel {
-  color: rgba(255, 130, 130, 0.9);
-}
-
-.successMessage p,
-.errorMessage p {
-  margin: 0;
-
-  font-size: 12px;
-  line-height: 1.6;
-
-  color: rgba(255, 255, 255, 0.45);
-}
-
-@keyframes messageAppear {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
+    margin-top: 45px;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .line {
+    flex-shrink: 0;
+
+    width: 32px;
+
+    margin-top: 6px;
+  }
+
+  .bottom p {
+    font-size: 9px;
+
+    line-height: 1.6;
   }
 }
-.validationMessage {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
 
-  margin-bottom: 30px;
-  padding: 16px 18px;
+/* =================================
+   SMALL PHONES
+================================= */
 
-  border: 1px solid rgba(255, 190, 90, 0.16);
-  border-radius: 10px;
+@media (max-width: 380px) {
+  .contact {
+    padding: 75px 0 60px;
+  }
 
-  background: rgba(255, 190, 90, 0.045);
+  .container {
+    width: calc(100% - 28px);
+  }
 
-  animation: messageAppear 0.35s ease forwards;
-}
+  .headingContent h2 {
+    font-size: 39px;
+  }
 
-.validationMessage .messageIcon {
-  border: 1px solid rgba(255, 190, 90, 0.25);
-  background: rgba(255, 190, 90, 0.08);
+  .intro h3 {
+    font-size: 27px;
+  }
 
-  color: rgba(255, 200, 110, 0.9);
-}
+  .formWrapper {
+    padding: 18px;
+  }
 
-.validationMessage .messageLabel {
-  color: rgba(255, 200, 110, 0.9);
-}
+  .form {
+    gap: 24px;
+  }
 
-.validationMessage p {
-  margin: 4px 0 0;
+  .successMessage,
+  .errorMessage,
+  .validationMessage {
+    padding: 10px;
+  }
 
-  font-size: 12px;
-  line-height: 1.6;
-
-  color: rgba(255, 255, 255, 0.45);
+  .successMessage p,
+  .errorMessage p,
+  .validationMessage p {
+    font-size: 9px;
+  }
 }

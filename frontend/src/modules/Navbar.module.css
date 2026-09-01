@@ -19,37 +19,40 @@
   pointer-events: none;
 }
 
-
 /* =================================
    NAVBAR
 ================================= */
 
 .navbar {
   display: flex;
+
   align-items: center;
 
   width: min(1180px, 100%);
 
-  height: 64px;
+  height: 62px;
 
   margin: 0 auto;
 
-  padding: 0 20px;
+  padding: 0 18px;
 
   box-sizing: border-box;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   border-radius: 14px;
 
-  background: rgba(10, 10, 10, 0.78);
+  background: rgba(17, 22, 29, 0.88);
 
   backdrop-filter: blur(18px);
+
   -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.15);
 
   pointer-events: auto;
 }
-
 
 /* =================================
    LOGO
@@ -57,6 +60,7 @@
 
 .logo {
   display: flex;
+
   align-items: center;
 
   gap: 9px;
@@ -66,17 +70,22 @@
   text-decoration: none;
 
   font-size: 16px;
+
   font-weight: 600;
 
   letter-spacing: -0.04em;
 
-  color: rgba(255, 255, 255, 0.95);
+  color: #e9eef5;
 
-  transition: opacity 0.25s ease;
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
 }
 
 .logo:hover {
-  opacity: 0.75;
+  color: #ffffff;
+
+  opacity: 0.85;
 }
 
 .logoDot {
@@ -87,9 +96,12 @@
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.9);
-}
+  background: #5ea7ff;
 
+  box-shadow:
+    0 0 0 3px rgba(94, 167, 255, 0.08),
+    0 0 12px rgba(94, 167, 255, 0.4);
+}
 
 /* =================================
    DESKTOP NAVIGATION
@@ -97,52 +109,86 @@
 
 .navLinks {
   display: flex;
+
   align-items: center;
 
-  gap: 34px;
+  gap: 8px;
 
   margin-left: auto;
-  margin-right: 38px;
+
+  margin-right: 28px;
 }
 
 .navLinks a {
   position: relative;
 
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 36px;
+
+  padding: 0 13px;
+
+  border-radius: 7px;
+
   white-space: nowrap;
 
   text-decoration: none;
 
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 11px;
 
-  color: rgba(255, 255, 255, 0.42);
+  font-weight: 500;
 
-  transition: color 0.25s ease;
+  color: #758190;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
 }
 
-.navLinks a:hover,
-.navLinks .active {
-  color: rgba(255, 255, 255, 0.95);
+.navLinks a:hover {
+  color: #dce4ed;
+
+  background: rgba(255, 255, 255, 0.035);
 }
 
-.navLinks .active::after {
+/* =================================
+   ACTIVE NAV ITEM
+================================= */
+
+.navLinks a.active {
+  color: #eaf3ff;
+
+  background: rgba(94, 167, 255, 0.08);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(94, 167, 255, 0.12);
+}
+
+.navLinks a.active::after {
   content: "";
 
   position: absolute;
 
   left: 50%;
-  bottom: -8px;
 
-  width: 3px;
-  height: 3px;
+  bottom: -5px;
+
+  width: 4px;
+  height: 4px;
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.9);
+  background: #5ea7ff;
 
   transform: translateX(-50%);
-}
 
+  box-shadow:
+    0 0 8px rgba(94, 167, 255, 0.7);
+}
 
 /* =================================
    DESKTOP CTA
@@ -150,28 +196,30 @@
 
 .cta {
   display: flex;
+
   align-items: center;
 
   gap: 9px;
 
   flex-shrink: 0;
 
-  padding: 10px 15px;
+  padding: 9px 14px;
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(94, 167, 255, 0.25);
 
   border-radius: 8px;
 
   text-decoration: none;
 
-  font-size: 12px;
+  font-size: 11px;
+
   font-weight: 500;
 
   white-space: nowrap;
 
-  color: rgba(255, 255, 255, 0.9);
+  color: #dcecff;
 
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(94, 167, 255, 0.08);
 
   transition:
     background 0.25s ease,
@@ -182,13 +230,15 @@
 .cta span {
   font-size: 14px;
 
+  color: #5ea7ff;
+
   transition: transform 0.25s ease;
 }
 
 .cta:hover {
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(94, 167, 255, 0.14);
 
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(94, 167, 255, 0.4);
 
   transform: translateY(-1px);
 }
@@ -196,7 +246,6 @@
 .cta:hover span {
   transform: translate(2px, -2px);
 }
-
 
 /* =================================
    MOBILE MENU BUTTON
@@ -220,9 +269,19 @@
 
   border-radius: 9px;
 
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.035);
 
   cursor: pointer;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.menuButton:hover {
+  border-color: rgba(94, 167, 255, 0.3);
+
+  background: rgba(94, 167, 255, 0.06);
 }
 
 .menuButton span {
@@ -233,13 +292,14 @@
   width: 17px;
   height: 1px;
 
-  background: rgba(255, 255, 255, 0.8);
+  background: #aeb9c6;
 
   transform: translateX(-50%);
 
   transition:
     transform 0.3s ease,
-    top 0.3s ease;
+    top 0.3s ease,
+    background 0.25s ease;
 }
 
 .menuButton span:first-child {
@@ -250,13 +310,10 @@
   top: 23px;
 }
 
-
-/* =================================
-   HAMBURGER → X
-================================= */
-
 .menuButton.menuOpen span:first-child {
   top: 20px;
+
+  background: #5ea7ff;
 
   transform:
     translateX(-50%)
@@ -266,11 +323,12 @@
 .menuButton.menuOpen span:last-child {
   top: 20px;
 
+  background: #5ea7ff;
+
   transform:
     translateX(-50%)
     rotate(-45deg);
 }
-
 
 /* =================================
    MOBILE MENU
@@ -280,9 +338,8 @@
   display: none;
 }
 
-
 /* =================================
-   LAPTOP / TABLET
+   TABLET / MOBILE
 ================================= */
 
 @media (max-width: 1000px) {
@@ -297,19 +354,14 @@
     padding: 0 16px;
   }
 
-  /* Hide desktop navigation */
-
   .navLinks,
   .cta {
     display: none;
   }
 
-  /* Show hamburger */
-
   .menuButton {
     display: block;
   }
-
 
   /* =================================
      MOBILE DROPDOWN
@@ -317,6 +369,7 @@
 
   .mobileMenu {
     display: flex;
+
     flex-direction: column;
 
     position: fixed;
@@ -332,16 +385,20 @@
 
     box-sizing: border-box;
 
-    padding: 26px;
+    padding: 22px;
 
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 
-    border-radius: 16px;
+    border-radius: 15px;
 
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(17, 22, 29, 0.97);
 
     backdrop-filter: blur(22px);
+
     -webkit-backdrop-filter: blur(22px);
+
+    box-shadow:
+      0 25px 70px rgba(0, 0, 0, 0.3);
 
     opacity: 0;
 
@@ -369,13 +426,13 @@
     pointer-events: auto;
   }
 
-
   /* =================================
      MOBILE LINKS
   ================================= */
 
   .mobileLinks {
     display: flex;
+
     flex-direction: column;
 
     width: 100%;
@@ -383,11 +440,12 @@
 
   .mobileLinks > a {
     display: flex;
+
     align-items: center;
 
     width: 100%;
 
-    min-height: 62px;
+    min-height: 58px;
 
     box-sizing: border-box;
 
@@ -395,21 +453,22 @@
 
     text-decoration: none;
 
-    font-size: 22px;
+    font-size: 20px;
 
     font-weight: 400;
 
     letter-spacing: -0.035em;
 
-    color: rgba(255, 255, 255, 0.8);
+    color: #9aa6b5;
 
     transition:
       color 0.25s ease,
-      padding-left 0.25s ease;
+      padding-left 0.25s ease,
+      background 0.25s ease;
   }
 
   .mobileLinks > a:hover {
-    color: #ffffff;
+    color: #e9eef5;
 
     padding-left: 5px;
   }
@@ -419,15 +478,46 @@
 
     flex-shrink: 0;
 
-    font-size: 9px;
+    font-size: 8px;
 
     font-weight: 600;
 
     letter-spacing: 0.12em;
 
-    color: rgba(255, 255, 255, 0.25);
+    color: #536070;
   }
 
+  /* =================================
+     MOBILE ACTIVE
+  ================================= */
+
+  .mobileLinks > a.mobileActive {
+    color: #e9f3ff;
+
+    padding-left: 5px;
+  }
+
+  .mobileLinks > a.mobileActive span {
+    color: #5ea7ff;
+  }
+
+  .mobileLinks > a.mobileActive::after {
+    content: "";
+
+    width: 5px;
+    height: 5px;
+
+    margin-left: auto;
+
+    margin-right: 4px;
+
+    border-radius: 50%;
+
+    background: #5ea7ff;
+
+    box-shadow:
+      0 0 10px rgba(94, 167, 255, 0.7);
+  }
 
   /* =================================
      MOBILE CTA
@@ -435,31 +525,45 @@
 
   .mobileLinks .mobileCta {
     display: flex;
+
     align-items: center;
 
-    min-height: 54px;
+    min-height: 52px;
 
     margin-top: 16px;
 
-    padding: 0 17px;
+    padding: 0 15px;
 
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(94, 167, 255, 0.22);
 
-    border-radius: 9px;
+    border-radius: 8px;
 
-    background: rgba(255, 255, 255, 0.045);
+    background: rgba(94, 167, 255, 0.07);
 
-    font-size: 15px;
+    color: #dcecff;
+
+    font-size: 14px;
   }
 
   .mobileCta b {
     margin-left: auto;
 
-    font-size: 17px;
+    font-size: 16px;
 
     font-weight: 400;
+
+    color: #5ea7ff;
   }
 
+  .mobileLinks .mobileCtaActive {
+    border-color: rgba(94, 167, 255, 0.45);
+
+    background: rgba(94, 167, 255, 0.12);
+  }
+
+  .mobileLinks .mobileCtaActive::after {
+    display: none;
+  }
 
   /* =================================
      MOBILE FOOTER
@@ -467,22 +571,22 @@
 
   .mobileFooter {
     display: flex;
+
     justify-content: space-between;
 
     width: 100%;
 
-    margin-top: 35px;
+    margin-top: 30px;
 
-    font-size: 8px;
+    font-size: 7px;
 
     font-weight: 600;
 
     letter-spacing: 0.13em;
 
-    color: rgba(255, 255, 255, 0.22);
+    color: #566271;
   }
 }
-
 
 /* =================================
    SMALL PHONES
@@ -520,7 +624,6 @@
     top: 18px;
   }
 
-
   .mobileMenu {
     top: 76px;
 
@@ -529,28 +632,27 @@
 
     max-height: calc(100vh - 88px);
 
-    padding: 20px;
+    padding: 18px;
 
-    border-radius: 14px;
+    border-radius: 13px;
   }
 
   .mobileLinks > a {
-    min-height: 56px;
+    min-height: 54px;
 
-    font-size: 19px;
+    font-size: 18px;
   }
 
   .mobileLinks > a span {
-    width: 36px;
+    width: 35px;
   }
 
   .mobileFooter {
-    margin-top: 28px;
+    margin-top: 25px;
 
-    font-size: 7px;
+    font-size: 6px;
   }
 }
-
 
 /* =================================
    VERY SMALL PHONES
@@ -571,10 +673,10 @@
     left: 8px;
     right: 8px;
 
-    padding: 18px;
+    padding: 16px;
   }
 
   .mobileLinks > a {
-    font-size: 18px;
+    font-size: 17px;
   }
 }

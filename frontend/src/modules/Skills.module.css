@@ -1,46 +1,76 @@
-
-
+/* =================================
+   SKILLS
+================================= */
 
 .skills {
   position: relative;
 
   padding: 140px 0;
 
-  background: #0b0b0e;
-  color: #ffffff;
+  background: #11161d;
+  color: #f3f6fa;
 
   overflow: hidden;
 }
 
+/* subtle background light */
+
+.skills::before {
+  content: "";
+
+  position: absolute;
+
+  top: 10%;
+  left: -220px;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  background: rgba(94, 167, 255, 0.035);
+
+  filter: blur(110px);
+
+  pointer-events: none;
+}
+
 .container {
+  position: relative;
+  z-index: 1;
+
   width: min(1120px, calc(100% - 40px));
+
   margin: 0 auto;
 }
 
-/* =========================
+/* =================================
    HEADER
-========================= */
+================================= */
 
 .header {
   display: grid;
+
   grid-template-columns: 0.35fr 1fr;
 
   gap: 40px;
 
   padding-bottom: 70px;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 .label {
   padding-top: 11px;
 
-  color: #52525b;
+  color: #697686;
 
   font-size: 11px;
+
   font-weight: 600;
 
   letter-spacing: 1.5px;
+
   text-transform: uppercase;
 }
 
@@ -52,14 +82,18 @@
   margin: 0;
 
   font-size: clamp(42px, 5vw, 66px);
+
   line-height: 1.05;
 
-  font-weight: 650;
+  font-weight: 500;
+
   letter-spacing: -3px;
+
+  color: #f3f6fa;
 }
 
 .headingContent h2 span {
-  color: #52525b;
+  color: #5ea7ff;
 }
 
 .headingContent p {
@@ -67,72 +101,81 @@
 
   margin: 25px 0 0;
 
-  color: #71717a;
+  color: #8995a4;
 
   font-size: 15px;
+
   line-height: 1.8;
 }
 
-/* =========================
-   GRID
-========================= */
+/* =================================
+   SKILLS GRID
+================================= */
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
 
-  gap: 1px;
+  grid-template-columns: repeat(2, 1fr);
 
   margin-top: 70px;
 
-  overflow: hidden;
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-
-  background: rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  border-left: 1px solid rgba(255, 255, 255, 0.09);
 }
 
-/* =========================
-   CARD
-========================= */
+/* =================================
+   SKILL ITEM
+================================= */
 
 .card {
-  min-height: 300px;
+  min-height: 280px;
 
   display: flex;
+
   flex-direction: column;
 
-  padding: 30px;
+  padding: 32px;
 
-  background: #0b0b0e;
+  background: rgba(23, 29, 38, 0.5);
+
+  border-right: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 
   transition:
     background 0.3s ease,
-    transform 0.3s ease;
+    border-color 0.3s ease;
 }
 
 .card:hover {
-  background: #101014;
+  background: rgba(29, 37, 48, 0.7);
+
+  border-color: rgba(94, 167, 255, 0.2);
 }
 
-/* Card top */
+/* =================================
+   CARD TOP
+================================= */
 
 .cardTop {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 }
 
 .number {
-  color: #3f3f46;
+  color: #526071;
 
   font-family: monospace;
-  font-size: 11px;
+
+  font-size: 10px;
+
+  letter-spacing: 0.05em;
 }
 
 .arrow {
-  color: #3f3f46;
+  color: #526071;
 
   font-size: 17px;
 
@@ -142,11 +185,14 @@
 }
 
 .card:hover .arrow {
-  color: #ffffff;
+  color: #5ea7ff;
+
   transform: translate(2px, -2px);
 }
 
-/* Card content */
+/* =================================
+   CARD CONTENT
+================================= */
 
 .cardContent {
   margin-top: auto;
@@ -155,12 +201,13 @@
 .cardContent h3 {
   margin: 0;
 
-  color: #e4e4e7;
+  color: #e8edf3;
 
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 24px;
 
-  letter-spacing: -0.5px;
+  font-weight: 500;
+
+  letter-spacing: -0.7px;
 }
 
 .cardContent p {
@@ -168,80 +215,89 @@
 
   margin: 10px 0 0;
 
-  color: #52525b;
+  color: #788594;
 
   font-size: 12px;
+
   line-height: 1.7;
 }
 
-/* =========================
-   SKILLS
-========================= */
+/* =================================
+   SKILL PILLS
+================================= */
 
 .skillList {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 7px;
 
-  margin-top: 30px;
+  margin-top: 28px;
 }
 
 .skill {
   padding: 7px 10px;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
 
-  background: rgba(255, 255, 255, 0.025);
+  border-radius: 6px;
 
-  color: #a1a1aa;
+  background: rgba(255, 255, 255, 0.035);
 
-  font-size: 11px;
+  color: #aab4c0;
+
+  font-size: 10px;
 
   transition:
-    color 0.25s ease,
     background 0.25s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .card:hover .skill {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(94, 167, 255, 0.07);
 
-  color: #d4d4d8;
+  border-color: rgba(94, 167, 255, 0.2);
+
+  color: #c8dcf5;
 }
 
-/* =========================
+/* =================================
    BOTTOM
-========================= */
+================================= */
 
 .bottom {
   display: flex;
+
   align-items: center;
+
   gap: 14px;
 
-  margin-top: 75px;
+  margin-top: 70px;
 }
 
 .line {
   width: 35px;
+
   height: 1px;
 
-  background: #3f3f46;
+  background: #5ea7ff;
 }
 
 .bottom p {
   margin: 0;
 
-  color: #52525b;
+  color: #697686;
 
   font-size: 11px;
+
   letter-spacing: 0.4px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =================================
+   TABLET
+================================= */
 
 @media (max-width: 900px) {
   .header {
@@ -255,38 +311,146 @@
   }
 }
 
+/* =================================
+   MOBILE
+================================= */
+
 @media (max-width: 600px) {
   .skills {
-    padding: 100px 0;
+    padding: 90px 0;
   }
 
   .container {
-    width: min(100% - 28px, 1120px);
+    width: calc(100% - 32px);
   }
 
   .header {
-    padding-bottom: 55px;
+    padding-bottom: 50px;
+  }
+
+  .label {
+    font-size: 9px;
   }
 
   .headingContent h2 {
-    font-size: 42px;
+    font-size: clamp(40px, 11vw, 52px);
+
+    line-height: 1.05;
 
     letter-spacing: -2px;
   }
 
-  .grid {
-    margin-top: 55px;
+  .headingContent p {
+    margin-top: 20px;
 
-    border-radius: 14px;
+    font-size: 13px;
+
+    line-height: 1.75;
+  }
+
+  /* No giant cards on mobile */
+
+  .grid {
+    display: flex;
+
+    flex-direction: column;
+
+    margin-top: 50px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+
+    border-left: none;
   }
 
   .card {
-    min-height: 260px;
+    min-height: auto;
 
-    padding: 24px;
+    padding: 26px 4px 28px;
+
+    background: transparent;
+
+    border-right: none;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  }
+
+  .card:hover {
+    background: rgba(94, 167, 255, 0.025);
+  }
+
+  .cardContent {
+    margin-top: 28px;
+  }
+
+  .cardContent h3 {
+    font-size: 21px;
+  }
+
+  .cardContent p {
+    max-width: 300px;
+
+    margin-top: 8px;
+
+    font-size: 11px;
+  }
+
+  .skillList {
+    gap: 6px;
+
+    margin-top: 20px;
+  }
+
+  .skill {
+    padding: 7px 9px;
+
+    font-size: 10px;
   }
 
   .bottom {
-    margin-top: 55px;
+    margin-top: 50px;
+  }
+
+  .bottom p {
+    font-size: 9px;
+  }
+}
+
+/* =================================
+   SMALL PHONES
+================================= */
+
+@media (max-width: 380px) {
+  .skills {
+    padding: 75px 0;
+  }
+
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .headingContent h2 {
+    font-size: 39px;
+  }
+
+  .headingContent p {
+    font-size: 12px;
+  }
+
+  .card {
+    padding: 23px 2px 25px;
+  }
+
+  .cardContent h3 {
+    font-size: 19px;
+  }
+
+  .cardContent p {
+    font-size: 10px;
+  }
+
+  .skill {
+    padding: 6px 8px;
+
+    font-size: 9px;
   }
 }
