@@ -58,14 +58,15 @@ INSTALLED_APPS = [
     "contact",
     'rest_framework',
     'projects',
-     "cloudinary_storage",
-    "cloudinary",
+  
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+       "cloudinary_storage",
+        "cloudinary",
 ]
 
 MIDDLEWARE = [
@@ -111,8 +112,11 @@ if DATABASE_URL:
             ssl_require=True,
         )
     }
+
+    DATABASES["default"]["OPTIONS"]["connect_timeout"] = 10
+
 else:
- DATABASES = {
+    DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db.sqlite3",
