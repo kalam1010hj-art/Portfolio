@@ -1,47 +1,106 @@
-import styles from "../modules/Contact.module.css";
 import { useState } from "react";
+import styles from "../modules/Contact.module.css";
 import handleMessage from "../services/contactService";
+
+import {
+  Mail,
+  Phone,
+  MessageCircle,
+  ArrowUpRight,
+  ArrowRight,
+  ChevronDown,
+  Send,
+  CheckCircle2,
+} from "lucide-react";
+
+// Contact information
+const CONTACT = {
+  email: "kalam1010hj@gmail.com",
+  phone: "+91 7013741498",
+  whatsapp: "917013741498",
+};
+
 function Contact() {
-  let [validationError, setValidationError] = useState(false);
-  let [formData, setFormData] = useState({
+  const [showForm, setShowForm] = useState(false);
+
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-  let [isSubmitted, setSubmitted] = useState(false);
-  let [error, setError] = useState(false);
+
+  const [validationError, setValidationError] = useState("");
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [isSubmitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+
+  const phoneHref = CONTACT.phone
+    ? `tel:${CONTACT.phone.replace(/[^\d+]/g, "")}`
+    : null;
+
+  const whatsappNumber = CONTACT.whatsapp.replace(/\D/g, "");
+
+  const whatsappHref = /^\d{10,15}$/.test(whatsappNumber)
+    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        "Hi, I came across your portfolio and would like to connect."
+      )}`
+    : null;
+
   function handleOnchange(event) {
-    let name = event.target.name;
-    let value = event.target.value;
+    const { name, value } = event.target;
+
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
+
+    setValidationError("");
     setError(false);
-
-    setFormData({ ...formData, [name]: value });
-  }
-  function handleSubmit(event) {
-  event.preventDefault();
-
-  setSubmitted(false);
-  setError(false);
-  setValidationError("");
-
-  if (!formData.name.trim()) {
-    setValidationError("Please enter your name.");
-    return;
+    setSubmitted(false);
   }
 
-  if (!formData.email.trim()) {
-    setValidationError("Please enter your email address.");
-    return;
-  }
+  async function handleSubmit(event) {
+    event.preventDefault();
 
-  if (!formData.message.trim()) {
-    setValidationError("Please enter a message.");
-    return;
-  }
+    if (isSubmitting) return;
 
-  handleMessage(formData)
-    .then((data) => {
-      console.log(data);
+    setValidationError("");
+    setError(false);
+    setSubmitted(false);
+
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const message = formData.message.trim();
+
+    if (!name) {
+      setValidationError("Please enter your name.");
+      return;
+    }
+
+    if (!email) {
+      setValidationError("Please enter your email address.");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setValidationError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!message) {
+      setValidationError("Please enter your message.");
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      await handleMessage({
+        name,
+        email,
+        message,
+      });
+
       setSubmitted(true);
 
       setFormData({
@@ -49,170 +108,416 @@ function Contact() {
         email: "",
         message: "",
       });
-    })
-    .catch((error) => {
-      console.log(error);
+    } catch (err) {
+      console.error(err);
       setError(true);
-    });
-}
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <section id="contact" className={styles.contact}>
       <div className={styles.container}>
-        {/* Header */}
-        <div className={styles.header}>
-          <span className={styles.label}>04 — Contact</span>
 
-          <div className={styles.headingContent}>
+        {/* ==========================
+            SECTION HEADER
+        ========================== */}
+
+        <div className={styles.sectionHeader}>
+          <div className={styles.sectionNumber}>
+            <span>04 / CONTACT</span>
+          </div>
+
+          <div className={styles.heading}>
             <h2>
-              Let's build
-              <span> something.</span>
+              Have something
+              <br />
+              <span>in mind?</span>
             </h2>
 
             <p>
-              Have an idea, a project, or an opportunity in mind? I'd love to
-              hear about it.
+              Whether it's a job opportunity, freelance project,
+              or collaboration, I'm always open to a conversation.
             </p>
           </div>
         </div>
 
-        {/* Contact Content */}
-        <div className={styles.contactGrid}>
-          {/* Left */}
-          <div className={styles.intro}>
-            <span className={styles.introLabel}>GET IN TOUCH</span>
+
+        {/* ==========================
+            PRIMARY EMAIL CONTACT
+        ========================== */}
+
+        <div className={styles.emailCard}>
+
+          <div className={styles.emailTop}>
+            <div className={styles.emailIcon}>
+              <Mail size={23} strokeWidth={1.7} />
+            </div>
+
+            <span className={styles.preferredBadge}>
+              Preferred contact
+            </span>
+          </div>
+
+          <div className={styles.emailContent}>
+            <span className={styles.cardLabel}>
+              EMAIL ME DIRECTLY
+            </span>
 
             <h3>
-              Let's turn your
+              The easiest way
               <br />
-              <span>ideas into reality.</span>
+              to reach me.
             </h3>
 
-            <p>
-              Whether you're looking to build something from scratch, improve an
-              existing product, or simply want to talk about an idea, feel free
-              to reach out.
-            </p>
-
-            <a href="mailto:kalam1010hj@gmail.com" className={styles.email}>
-              <span>kalam1010hj@gmail.com</span>
-              <span className={styles.emailArrow}>↗</span>
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className={styles.emailAddress}
+            >
+              {CONTACT.email}
+              <ArrowUpRight
+                size={23}
+                strokeWidth={1.7}
+                aria-hidden="true"
+              />
             </a>
 
-            {/* Social Links */}
-            <div className={styles.socials}>
-              <a href="#" target="_blank" rel="noreferrer">
-                GitHub
-                <span>↗</span>
-              </a>
+            <p>
+              For opportunities, project discussions, or just
+              getting in touch.
+            </p>
+          </div>
 
-              <a href="#" target="_blank" rel="noreferrer">
-                LinkedIn
-                <span>↗</span>
-              </a>
+          <div className={styles.emailBottom}>
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className={styles.emailButton}
+            >
+              <Mail size={17} strokeWidth={1.8} />
+              <span>Send an email</span>
+              <ArrowUpRight size={17} />
+            </a>
+
+            <span className={styles.emailNote}>
+              Opens your email application
+            </span>
+          </div>
+        </div>
+
+
+        {/* ==========================
+            OTHER CONTACT METHODS
+        ========================== */}
+
+        <div className={styles.otherContactHeader}>
+          <h3>Other ways to connect</h3>
+          <p>Choose what works best for you.</p>
+        </div>
+
+        <div className={styles.contactMethods}>
+
+          {/* PHONE CARD */}
+
+          <div className={styles.methodCard}>
+            <div className={styles.methodTop}>
+              <div className={styles.methodIcon}>
+                <Phone size={21} strokeWidth={1.8} />
+              </div>
+
+              <span className={styles.methodCategory}>
+                PHONE
+              </span>
+            </div>
+
+            <div className={styles.methodContent}>
+              <h3>Give me a call</h3>
+
+              <p>
+                Prefer speaking directly?
+                Feel free to reach out by phone.
+              </p>
+
+              <div className={styles.methodValue}>
+                {CONTACT.phone || "Phone number not added"}
+              </div>
+            </div>
+
+            <div className={styles.methodBottom}>
+              {phoneHref ? (
+                <a href={phoneHref} className={styles.methodLink}>
+                  Call now
+                  <ArrowUpRight size={18} />
+                </a>
+              ) : (
+                <span className={styles.unavailable}>
+                  Contact details coming soon
+                </span>
+              )}
             </div>
           </div>
 
-          {/* Right — Form */}
-          <div className={styles.formWrapper}>
-            <form
-              className={styles.form}
-              onSubmit={(event) => {
-                handleSubmit(event);
-              }}
-            >
-              {isSubmitted && (
-                <div className={styles.successMessage}>
-                  <div className={styles.messageIcon}>✓</div>
 
-                  <div>
-                    <span className={styles.messageLabel}>Message sent</span>
-                    <p>Thanks for reaching out. I'll get back to you soon.</p>
-                  </div>
-                </div>
+          {/* WHATSAPP CARD */}
+
+          <div className={styles.methodCard}>
+            <div className={styles.methodTop}>
+              <div className={styles.methodIcon}>
+                <MessageCircle
+                  size={21}
+                  strokeWidth={1.8}
+                />
+              </div>
+
+              <span className={styles.methodCategory}>
+                WHATSAPP
+              </span>
+            </div>
+
+            <div className={styles.methodContent}>
+              <h3>Let's chat</h3>
+
+              <p>
+                Have a quick question or want to
+                discuss something? Message me on WhatsApp.
+              </p>
+
+              <div className={styles.methodValue}>
+                {CONTACT.phone || "WhatsApp contact"}
+              </div>
+            </div>
+
+            <div className={styles.methodBottom}>
+              {whatsappHref ? (
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.methodLink}
+                >
+                  Open WhatsApp
+                  <ArrowUpRight size={18} />
+                </a>
+              ) : (
+                <span className={styles.unavailable}>
+                  WhatsApp link coming soon
+                </span>
               )}
+            </div>
+          </div>
 
-              {error && (
-                <div className={styles.errorMessage}>
-                  <div className={styles.messageIcon}>!</div>
+        </div>
 
-                  <div>
-                    <span className={styles.messageLabel}>Unable to send</span>
+
+        {/* ==========================
+            OPTIONAL CONTACT FORM
+        ========================== */}
+
+        <div className={styles.messageSection}>
+
+          <div className={styles.messageSectionHeader}>
+            <div>
+              <span className={styles.formEyebrow}>
+                ANOTHER OPTION
+              </span>
+
+              <h3>Prefer leaving a message?</h3>
+
+              <p>
+                You can also send a message directly
+                through this website.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              className={`${styles.formToggle} ${
+                showForm ? styles.formToggleActive : ""
+              }`}
+              onClick={() => setShowForm((prev) => !prev)}
+              aria-expanded={showForm}
+              aria-controls="portfolio-contact-form"
+            >
+              <span>
+                {showForm ? "Close form" : "Write a message"}
+              </span>
+
+              <ChevronDown size={19} />
+            </button>
+          </div>
+
+
+          {showForm && (
+            <div
+              id="portfolio-contact-form"
+              className={styles.formContainer}
+            >
+              <form
+                className={styles.form}
+                onSubmit={handleSubmit}
+                noValidate
+              >
+
+                {/* Success Message */}
+
+                {isSubmitted && (
+                  <div
+                    className={styles.successMessage}
+                    role="status"
+                  >
+                    <CheckCircle2 size={20} />
+
+                    <div>
+                      <strong>Message sent successfully.</strong>
+                      <p>
+                        Thanks for reaching out.
+                        I'll get back to you soon.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+
+                {/* Error Message */}
+
+                {error && (
+                  <div
+                    className={styles.errorMessage}
+                    role="alert"
+                  >
+                    <strong>Unable to send your message.</strong>
                     <p>
-                      Something went wrong while sending your message. Please
-                      try again.
+                      Please try again or contact me directly
+                      through email.
                     </p>
                   </div>
+                )}
+
+
+                {/* Validation Error */}
+
+                {validationError && (
+                  <div
+                    className={styles.errorMessage}
+                    role="alert"
+                  >
+                    <p>{validationError}</p>
+                  </div>
+                )}
+
+
+                {/* NAME & EMAIL */}
+
+                <div className={styles.formRow}>
+
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="contact-name">
+                      Your name
+                    </label>
+
+                    <input
+                      id="contact-name"
+                      type="text"
+                      name="name"
+                      placeholder="Enter your name"
+                      autoComplete="name"
+                      value={formData.name}
+                      onChange={handleOnchange}
+                      maxLength={150}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+
+
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="contact-email">
+                      Email address
+                    </label>
+
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      placeholder="you@example.com"
+                      autoComplete="email"
+                      value={formData.email}
+                      onChange={handleOnchange}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+
                 </div>
-              )}
-              {validationError && (
-  <div className={styles.validationMessage}>
-    <div className={styles.messageIcon}>!</div>
 
-    <div>
-      <span className={styles.messageLabel}>Missing information</span>
-      <p>{validationError}</p>
-    </div>
-  </div>
-)}
-              <div className={styles.inputGroup}>
-                <label htmlFor="name">01 — Name</label>
 
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Your name"
-                  value={formData.name}
-                  onChange={(event) => {
-                    handleOnchange(event);
-                  }}
-                />
-              </div>
+                {/* MESSAGE */}
 
-              <div className={styles.inputGroup}>
-                <label htmlFor="email">02 — Email</label>
+                <div className={styles.inputGroup}>
+                  <label htmlFor="contact-message">
+                    Your message
+                  </label>
 
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="you@example.com"
-                  value={formData.email}
-                  onChange={(event) => {
-                    handleOnchange(event);
-                  }}
-                />
-              </div>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows="5"
+                    placeholder="Tell me what you have in mind..."
+                    value={formData.message}
+                    onChange={handleOnchange}
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-              <div className={styles.inputGroup}>
-                <label htmlFor="message">03 — Message</label>
 
-                <textarea
-                  id="message"
-                  rows="5"
-                  name="message"
-                  placeholder="Tell me about your project..."
-                  value={formData.message}
-                  onChange={(event) => {
-                    handleOnchange(event);
-                  }}
-                />
-              </div>
+                {/* SUBMIT */}
 
-              <button type="submit" className={styles.submitButton}>
-                <span>Send message</span>
-                <span className={styles.buttonArrow}>↗</span>
-              </button>
-            </form>
-          </div>
+                <div className={styles.formFooter}>
+
+                  <p>
+                    Your message will be sent directly
+                    to my inbox.
+                  </p>
+
+                  <button
+                    type="submit"
+                    className={styles.submitButton}
+                    disabled={isSubmitting}
+                  >
+                    <span>
+                      {isSubmitting
+                        ? "Sending..."
+                        : "Send message"}
+                    </span>
+
+                    {isSubmitting ? (
+                      <span className={styles.spinner} />
+                    ) : (
+                      <Send size={17} />
+                    )}
+                  </button>
+
+                </div>
+
+              </form>
+            </div>
+          )}
+
         </div>
 
-        {/* Bottom */}
+
+        {/* ==========================
+            BOTTOM
+        ========================== */}
+
         <div className={styles.bottom}>
-          <span className={styles.line}></span>
+          <span className={styles.bottomLine}></span>
 
-          <p>Usually responds within 24–48 hours.</p>
+          <span>
+            Let's make something useful together.
+          </span>
+
+          <ArrowRight size={16} />
         </div>
+
       </div>
     </section>
   );

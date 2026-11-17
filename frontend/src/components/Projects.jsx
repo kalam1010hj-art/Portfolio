@@ -1,227 +1,264 @@
-import styles from "../modules/Projects.module.css";
 import { useEffect, useState } from "react";
+import styles from "../modules/Projects.module.css";
+
 import getProjects from "../services/projectServices";
 import Loading from "./Loading";
-// const projects = [
-//   {
-//     id: 1,
-//     number: "01",
-//     title: "E-Commerce Platform",
-//     description:
-//       "A full-stack e-commerce application with product management, authentication, cart and order functionality.",
-//     technologies: ["React", "Django", "DRF", "MySQL"],
-//     github: "#",
-//     live: "#",
-//     featured: true,
-//   },
-//   {
-//     id: 2,
-//     number: "02",
-//     title: "Project Two",
-//     description:
-//       "A modern web application focused on solving a real-world problem with a clean and intuitive user experience.",
-//     technologies: ["React", "DRF", "MySQL"],
-//     github: "#",
-//     live: "#",
-//     featured: false,
-//   },
-//   {
-//     id: 3,
-//     number: "03",
-//     title: "Project Three",
-//     description:
-//       "A full-stack application designed with reusable components, REST APIs and a structured backend architecture.",
-//     technologies: ["React", "Django", "MySQL"],
-//     github: "#",
-//     live: "#",
-//     featured: false,
-//   },
-// ];
 
-function Projects() {
-  let [projects, setProjects] = useState([]);
-  let [isLoading, setLoading] = useState(true);
-  let [error, setError] = useState(false);
+// Project screenshot component
+function ProjectImage({ project }) {
+  const [imageError, setImageError] = useState(false);
+
+  // Use backend image if available.
+  // Otherwise load from React's public folder.
+  const imageUrl =project.image;
 
   useEffect(() => {
+    setImageError(false);
+  }, [imageUrl]);
+
+  return (
+    <div className={styles.preview}>
+      <div className={styles.browser}>
+        <div className={styles.browserHeader}>
+          <div className={styles.browserDots}>
+            <span />
+            <span />
+            <span />
+          </div>
+
+          <span className={styles.browserLabel}>
+            Project preview
+          </span>
+        </div>
+
+        <div className={styles.imageContainer}>
+          {!imageError ? (
+            <img
+              src={imageUrl}
+              alt={`${project.title} application screenshot`}
+              className={styles.projectImage}
+              loading="lazy"
+              decoding="async"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className={styles.imageFallback}>
+              <span>PROJECT PREVIEW</span>
+              <h4>{project.title}</h4>
+              {/* <p>Screenshot coming soon</p> */}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Projects() {
+  const [projects, setProjects] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+
+  useEffect(() => {
+    let active = true;
+
     getProjects()
       .then((data) => {
-        console.log(data);
-        setProjects(data);
-        setLoading(false);
+        if (!active) return;
+
+        const projectData = Array.isArray(data)
+          ? data
+          : data?.results || [];
+
+        setProjects(projectData);
+        setError(false);
       })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
+      .catch((err) => {
+        if (!active) return;
+
+        console.error(err);
         setError(true);
+      })
+      .finally(() => {
+        if (active) setLoading(false);
       });
-  }, []);
+
+    return () => {
+      active = false;
+    };
+  }, [retryCount]);
+
+  const handleRetry = () => {
+    setLoading(true);
+    setError(false);
+    setRetryCount((count) => count + 1);
+  };
 
   return (
     <section id="projects" className={styles.projects}>
       <div className={styles.container}>
-        {/* Header */}
-        <div className={styles.header}>
-          <span className={styles.label}>03 — Projects</span>
 
-          <div className={styles.headingContent}>
+        {/* Section Header */}
+        <div className={styles.sectionHeader}>
+          <div className={styles.sectionIndex}>
+            <span>03 / SELECTED WORK</span>
+          </div>
+
+          <div className={styles.headerContent}>
             <h2>
-              Things I've
-              <span> built.</span>
+              Selected <span>projects.</span>
             </h2>
 
             <p>
-              A selection of projects where I turn ideas into functional,
-              reliable and thoughtful digital experiences.
+              A collection of applications I've designed and
+              developed, focusing on functionality, performance,
+              and practical problem-solving.
             </p>
           </div>
         </div>
 
+        {/* Loading */}
+        {isLoading && (
+          <div className={styles.stateContainer}>
+            <Loading />
+          </div>
+        )}
+
+        {/* Error */}
+        {!isLoading && error && (
+          <div className={styles.errorState}>
+            <span className={styles.stateLabel}>
+              SOMETHING WENT WRONG
+            </span>
+
+            <h3>Unable to load projects.</h3>
+
+            <p>
+              The projects couldn't be retrieved right now.
+              Please try again.
+            </p>
+
+            <button
+              className={styles.retryButton}
+              onClick={handleRetry}
+            >
+              Try again <span>↗</span>
+            </button>
+          </div>
+        )}
+
         {/* Projects */}
-        <div className={styles.projectList}>
-          {/* ======= Handling Network errors =========== */}
-          {!isLoading && error && (
-            <div className={styles.errorState}>
-              <div className={styles.errorIcon}>!</div>
+        {!isLoading && !error && projects.length > 0 && (
+          <div className={styles.projectList}>
+            {projects.map((project, index) => {
+              const technologies = Array.isArray(
+                project.technologies
+              )
+                ? project.technologies
+                : [];
 
-              <div className={styles.errorContent}>
-                <span className={styles.errorLabel}>Unable to connect</span>
-
-                <h3>Projects couldn't be loaded.</h3>
-
-                <p>
-                  We couldn't reach the server right now. Please check your
-                  internet connection and try again.
-                </p>
-
-                <button
-                  className={styles.retryButton}
-                  onClick={() => window.location.reload()}
-                >
-                  Try again
-                  <span>↗</span>
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Handling Loading */}
-          {isLoading && <Loading />}
-
-          {/* handling projects */}
-          {projects.length > 0
-            ? projects.map((project) => (
+              return (
                 <article
                   key={project.id}
-                  className={`${styles.project} ${
-                    project.featured ? styles.featured : ""
-                  }`}
+                  className={styles.projectCard}
                 >
-                  {/* Project number */}
-                  <div className={styles.projectNumber}>{project.number}</div>
+                  {/* Project Details */}
+                  <div className={styles.projectDetails}>
 
-                  {/* Project content */}
-                  <div className={styles.projectContent}>
-                    <div className={styles.projectTop}>
-                      <div>
-                        <span className={styles.projectType}>
-                          {project.featured
-                            ? "Featured project"
-                            : "Full-stack application"}
+                    <div className={styles.projectMeta}>
+                      <span className={styles.projectNumber}>
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+
+                      {project.featured && (
+                        <span className={styles.featuredBadge}>
+                          Featured project
                         </span>
-
-                        <h3>{project.title}</h3>
-                      </div>
-
-                      <span className={styles.projectArrow}>↗</span>
+                      )}
                     </div>
 
-                    <p className={styles.description}>{project.description}</p>
+                    <div className={styles.projectInfo}>
+                      <h3>{project.title}</h3>
 
-                    {/* Technologies */}
-                    {/* <div className={styles.technologies}>
-                  {project.technologies.map((technology) => (
-                    <span key={technology}>
-                      {technology}
-                    </span>
-                  ))}
-                </div> */}
+                      <p className={styles.description}>
+                        {project.description}
+                      </p>
 
-                    {/* Links */}
-                    <div className={styles.links}>
-                      <a
-                        href={project.github_url}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        GitHub
-                        <span>↗</span>
-                      </a>
-
-                      <a
-                        href={project.live_url}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Live Demo
-                        <span>↗</span>
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Visual */}
-                  <div className={styles.visual}>
-                    <div className={styles.visualGrid}></div>
-
-                    <div className={styles.visualWindow}>
-                      <div className={styles.windowHeader}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
-
-                      <div className={styles.visualContent}>
-                        <div className={styles.visualLine}></div>
-                        <div className={styles.visualLine}></div>
-                        <div className={styles.visualLineShort}></div>
-
-                        <div className={styles.visualCards}>
-                          <div></div>
-                          <div></div>
-                          <div></div>
+                      {/* Technologies */}
+                      {technologies.length > 0 && (
+                        <div className={styles.technologies}>
+                          {technologies.map((tech, index) => (
+                            <span key={`${tech}-${index}`}>
+                              {tech}
+                            </span>
+                          ))}
                         </div>
-                      </div>
+                      )}
                     </div>
+
+                    {/* Project Links */}
+                    <div className={styles.projectLinks}>
+                      {project.live_url && (
+                        <a
+                          href={project.live_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.primaryLink}
+                        >
+                          Live Demo
+                          <span>↗</span>
+                        </a>
+                      )}
+
+                      {project.github_url && (
+                        <a
+                          href={project.github_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.secondaryLink}
+                        >
+                          GitHub
+                          <span>↗</span>
+                        </a>
+                      )}
+                    </div>
+
                   </div>
+
+                  {/* Project Screenshot */}
+                  <ProjectImage project={project} />
+
                 </article>
-              ))
-            : !isLoading &&
-              !error && (
-                <div className={styles.emptyState}>
-                  <div className={styles.emptyNumber}>00</div>
+              );
+            })}
+          </div>
+        )}
 
-                  <div className={styles.emptyContent}>
-                    <span className={styles.emptyLabel}>Projects</span>
+        {/* Empty State */}
+        {!isLoading && !error && projects.length === 0 && (
+          <div className={styles.emptyState}>
+            <span>NO PROJECTS AVAILABLE</span>
 
-                    <h3>Nothing here yet.</h3>
+            <h3>Work in progress.</h3>
 
-                    <p>
-                      I'm currently working on new ideas and projects. Check
-                      back soon to see what I've been building.
-                    </p>
-                  </div>
+            <p>
+              New projects will be added here soon.
+            </p>
+          </div>
+        )}
 
-                  <div className={styles.emptyArrow}>↗</div>
-                </div>
-              )}
-        </div>
+        {/* Footer */}
+        {!isLoading && !error && projects.length > 0 && (
+          <div className={styles.sectionFooter}>
+            <span className={styles.footerLine}></span>
 
-        {/* Bottom */}
-        <div className={styles.bottom}>
-          <span className={styles.line}></span>
+            <p>
+              More projects are in development.
+            </p>
+          </div>
+        )}
 
-          <p>More projects coming soon.</p>
-        </div>
       </div>
     </section>
   );

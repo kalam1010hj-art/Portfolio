@@ -1,837 +1,1091 @@
-/* =================================
-   CONTACT
-================================= */
+/* ===================================
+   CONTACT SECTION
+=================================== */
 
 .contact {
-  position: relative;
+  width: 100%;
+  padding: 110px 0 85px;
 
-  padding: 140px 0 100px;
-
-  background: #11161d;
-
-  color: #f3f6fa;
-
-  overflow: hidden;
-}
-
-/* subtle blue atmosphere */
-
-.contact::before {
-  content: "";
-
-  position: absolute;
-
-  top: 10%;
-  left: -220px;
-
-  width: 480px;
-  height: 480px;
-
-  border-radius: 50%;
-
-  background: rgba(94, 167, 255, 0.035);
-
-  filter: blur(120px);
-
-  pointer-events: none;
+  background: #08090b;
+  color: #f5f5f5;
 }
 
 .container {
-  position: relative;
-  z-index: 1;
-
-  width: min(1180px, calc(100% - 48px));
-
+  width: min(1150px, calc(100% - 48px));
   margin: 0 auto;
 }
 
-/* =================================
-   HEADER
-================================= */
 
-.header {
+/* ===================================
+   SECTION HEADER
+=================================== */
+
+.sectionHeader {
   display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 35px;
 
-  grid-template-columns: 180px 1fr;
-
-  gap: 60px;
-
-  margin-bottom: 90px;
+  margin-bottom: 55px;
 }
 
-.label {
-  padding-top: 12px;
+.sectionNumber {
+  padding-top: 13px;
+}
 
-  font-size: 10px;
-
+.sectionNumber span {
+  font-size: 11px;
   font-weight: 600;
+  letter-spacing: 1.8px;
 
-  letter-spacing: 0.16em;
-
-  text-transform: uppercase;
-
-  color: #697686;
+  color: #92969d;
 }
 
-.headingContent h2 {
+.heading h2 {
   margin: 0;
 
-  max-width: 700px;
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 650;
 
-  font-size: clamp(48px, 7vw, 86px);
+  line-height: 1.12;
+  letter-spacing: -2.5px;
 
-  line-height: 0.98;
-
-  font-weight: 400;
-
-  letter-spacing: -0.055em;
-
-  color: #f3f6fa;
+  color: #f5f5f5;
 }
 
-.headingContent h2 span {
-  color: #5ea7ff;
+.heading h2 span {
+  color: #888e98;
 }
 
-.headingContent p {
-  max-width: 520px;
+.heading p {
+  max-width: 540px;
 
-  margin: 30px 0 0;
+  margin: 23px 0 0;
 
   font-size: 15px;
+  line-height: 1.85;
 
-  line-height: 1.8;
-
-  color: #8995a4;
+  color: #a1a6af;
 }
 
-/* =================================
-   MAIN GRID
-================================= */
 
-.contactGrid {
-  display: grid;
+/* ===================================
+   PRIMARY EMAIL CARD
+=================================== */
 
-  grid-template-columns: 0.85fr 1.15fr;
+.emailCard {
+  position: relative;
 
-  gap: 100px;
+  padding: 38px 42px 40px;
 
-  padding-top: 50px;
+  background: #14171c;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.09);
-}
-
-/* =================================
-   INTRO
-================================= */
-
-.intro {
-  padding-top: 8px;
-}
-
-.introLabel {
-  display: block;
-
-  margin-bottom: 24px;
-
-  font-size: 9px;
-
-  font-weight: 600;
-
-  letter-spacing: 0.18em;
-
-  color: #6f7b89;
-}
-
-.intro h3 {
-  margin: 0;
-
-  font-size: clamp(28px, 3vw, 42px);
-
-  line-height: 1.08;
-
-  font-weight: 400;
-
-  letter-spacing: -0.04em;
-
-  color: #e9eef5;
-}
-
-.intro h3 span {
-  color: #5ea7ff;
-}
-
-.intro > p {
-  max-width: 420px;
-
-  margin: 28px 0 42px;
-
-  font-size: 13px;
-
-  line-height: 1.8;
-
-  color: #7f8b99;
-}
-
-/* =================================
-   EMAIL
-================================= */
-
-.email {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  width: min(100%, 420px);
-
-  padding-bottom: 16px;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
-
-  text-decoration: none;
-
-  font-size: 14px;
-
-  color: #c7d0da;
-
-  transition:
-    color 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.emailArrow {
-  font-size: 17px;
-
-  color: #697686;
-
-  transition:
-    color 0.25s ease,
-    transform 0.25s ease;
-}
-
-.email:hover {
-  color: #f3f6fa;
-
-  border-color: rgba(94, 167, 255, 0.45);
-}
-
-.email:hover .emailArrow {
-  color: #5ea7ff;
-
-  transform: translate(3px, -3px);
-}
-
-/* =================================
-   SOCIALS
-================================= */
-
-.socials {
-  display: flex;
-
-  gap: 28px;
-
-  margin-top: 30px;
-}
-
-.socials a {
-  display: flex;
-
-  align-items: center;
-
-  gap: 7px;
-
-  text-decoration: none;
-
-  font-size: 11px;
-
-  color: #788594;
-
-  transition: color 0.25s ease;
-}
-
-.socials a span {
-  font-size: 13px;
-
-  transition: transform 0.25s ease;
-}
-
-.socials a:hover {
-  color: #5ea7ff;
-}
-
-.socials a:hover span {
-  transform: translate(2px, -2px);
-}
-
-/* =================================
-   FORM WRAPPER
-================================= */
-
-.formWrapper {
-  padding: 28px 32px;
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #30343b;
   border-radius: 14px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(27, 35, 45, 0.9),
-      rgba(19, 25, 33, 0.82)
-    );
-
-  box-shadow:
-    0 20px 55px rgba(0, 0, 0, 0.2);
-
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-/* =================================
-   INPUTS
-================================= */
-
-.inputGroup {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 11px;
-}
-
-.inputGroup label {
-  font-size: 9px;
-
-  font-weight: 600;
-
-  letter-spacing: 0.15em;
-
-  text-transform: uppercase;
-
-  color: #758190;
-}
-
-.inputGroup input,
-.inputGroup textarea {
-  width: 100%;
-
-  padding: 14px 0;
-
-  border: none;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-
-  outline: none;
-
-  background: transparent;
-
-  color: #e9eef5;
-
-  font-family: inherit;
-
-  font-size: 14px;
+  overflow: hidden;
 
   transition:
     border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    background 0.25s ease;
 }
 
-.inputGroup textarea {
-  min-height: 90px;
-
-  resize: vertical;
-
-  line-height: 1.6;
+.emailCard:hover {
+  border-color: #535b66;
+  background: #171b20;
 }
 
-.inputGroup input::placeholder,
-.inputGroup textarea::placeholder {
-  color: #536070;
-}
 
-.inputGroup input:focus,
-.inputGroup textarea:focus {
-  border-color: #5ea7ff;
+/* EMAIL TOP */
 
-  box-shadow: 0 1px 0 rgba(94, 167, 255, 0.2);
-}
-
-/* =================================
-   SUBMIT BUTTON
-================================= */
-
-.submitButton {
+.emailTop {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
-  width: 100%;
+  gap: 20px;
+}
 
-  margin-top: 3px;
+.emailIcon {
+  width: 48px;
+  height: 48px;
 
-  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  border: 1px solid rgba(94, 167, 255, 0.4);
+  background: #252b33;
 
-  border-radius: 8px;
+  border: 1px solid #363e47;
+  border-radius: 10px;
 
-  background: #5ea7ff;
+  color: #eeeeee;
+}
 
-  color: #08111d;
+.preferredBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 
-  font-family: inherit;
+  padding: 9px 13px;
+
+  border: 1px solid #354b3f;
+  border-radius: 6px;
+
+  background: #19271f;
+
+  color: #a8d6ba;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.preferredBadge::before {
+  content: "";
+
+  width: 6px;
+  height: 6px;
+
+  background: #7bbb94;
+  border-radius: 50%;
+}
+
+
+/* EMAIL CONTENT */
+
+.emailContent {
+  margin-top: 45px;
+}
+
+.cardLabel {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+
+  color: #969da7;
+}
+
+.emailContent h3 {
+  margin: 0 0 24px;
+
+  font-size: clamp(28px, 3.4vw, 43px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+
+  line-height: 1.2;
+
+  color: #f2f2f2;
+}
+
+
+/* EMAIL ADDRESS */
+
+.emailAddress {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+
+  max-width: 100%;
+
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid #858c95;
+
+  color: #ffffff;
+
+  font-size: clamp(20px, 2.8vw, 31px);
+  font-weight: 500;
+
+  line-height: 1.4;
+  letter-spacing: -0.7px;
+
+  overflow-wrap: anywhere;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.emailAddress:hover {
+  color: #c9d7e5;
+  border-color: #c9d7e5;
+}
+
+.emailAddress svg {
+  flex-shrink: 0;
+}
+
+.emailContent > p {
+  margin: 18px 0 0;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #a1a7b0;
+}
+
+
+/* EMAIL BOTTOM */
+
+.emailBottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 20px;
+
+  margin-top: 38px;
+}
+
+.emailButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  min-height: 48px;
+  padding: 13px 20px;
+
+  background: #f4f4f4;
+  color: #111111;
+
+  border: 1px solid #f4f4f4;
+  border-radius: 7px;
+
+  font-size: 13px;
+  font-weight: 650;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.emailButton:hover {
+  background: #d9dde1;
+  transform: translateY(-2px);
+}
+
+.emailNote {
+  font-size: 12px;
+  color: #9299a3;
+}
+
+
+/* ===================================
+   OTHER CONTACT HEADER
+=================================== */
+
+.otherContactHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin: 55px 0 22px;
+}
+
+.otherContactHeader h3 {
+  margin: 0;
+
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+
+  color: #eaeaea;
+}
+
+.otherContactHeader p {
+  margin: 0;
 
   font-size: 12px;
+  color: #9299a3;
+}
 
+
+/* ===================================
+   CONTACT METHODS
+=================================== */
+
+.contactMethods {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.methodCard {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 275px;
+
+  padding: 28px;
+
+  background: #111418;
+
+  border: 1px solid #2a2e35;
+  border-radius: 12px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.methodCard:hover {
+  background: #15191e;
+  border-color: #464d56;
+}
+
+
+/* METHOD TOP */
+
+.methodTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.methodIcon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #22272e;
+
+  border: 1px solid #343a43;
+  border-radius: 9px;
+
+  color: #e6e9ed;
+}
+
+.methodCategory {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+
+  color: #8f969f;
+}
+
+
+/* METHOD CONTENT */
+
+.methodContent {
+  flex: 1;
+
+  margin-top: 25px;
+}
+
+.methodContent h3 {
+  margin: 0 0 10px;
+
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+
+  color: #eeeeee;
+}
+
+.methodContent p {
+  max-width: 350px;
+
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.75;
+
+  color: #a0a6af;
+}
+
+.methodValue {
+  margin-top: 18px;
+
+  font-size: 16px;
+  font-weight: 550;
+
+  color: #e2e5e9;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* METHOD BOTTOM */
+
+.methodBottom {
+  padding-top: 24px;
+  margin-top: 20px;
+
+  border-top: 1px solid #292e35;
+}
+
+.methodLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #f0f0f0;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: gap 0.2s ease;
+}
+
+.methodLink:hover {
+  gap: 17px;
+  color: #c5d4e2;
+}
+
+.unavailable {
+  font-size: 12px;
+  color: #8e949d;
+}
+
+
+/* ===================================
+   OPTIONAL MESSAGE SECTION
+=================================== */
+
+.messageSection {
+  margin-top: 75px;
+
+  padding-top: 38px;
+
+  border-top: 1px solid #292d33;
+}
+
+.messageSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.formEyebrow {
+  display: inline-block;
+
+  margin-bottom: 13px;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+
+  color: #9299a3;
+}
+
+.messageSectionHeader h3 {
+  margin: 0;
+
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+
+  color: #eeeeee;
+}
+
+.messageSectionHeader p {
+  margin: 11px 0 0;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #9da4ae;
+}
+
+
+/* FORM TOGGLE */
+
+.formToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 22px;
+
+  flex-shrink: 0;
+
+  min-height: 45px;
+  padding: 12px 17px;
+
+  border: 1px solid #434a53;
+  border-radius: 7px;
+
+  background: #171b20;
+  color: #f1f1f1;
+
+  font: inherit;
+  font-size: 12px;
   font-weight: 600;
 
   cursor: pointer;
 
   transition:
-    background 0.25s ease,
-    border-color 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
-.buttonArrow {
-  font-size: 16px;
+.formToggle:hover {
+  background: #222830;
+  border-color: #69737e;
+}
 
+.formToggle svg {
   transition: transform 0.25s ease;
 }
 
-.submitButton:hover {
-  background: #7ab8ff;
-
-  border-color: #7ab8ff;
-
-  transform: translateY(-2px);
-
-  box-shadow: 0 10px 30px rgba(94, 167, 255, 0.12);
+.formToggleActive svg {
+  transform: rotate(180deg);
 }
 
-.submitButton:hover .buttonArrow {
-  transform: translate(3px, -3px);
+
+/* ===================================
+   FORM CONTAINER
+=================================== */
+
+.formContainer {
+  margin-top: 35px;
+
+  padding: 34px;
+
+  background: #111418;
+
+  border: 1px solid #30343b;
+  border-radius: 12px;
 }
 
-/* =================================
-   STATUS MESSAGES
-================================= */
-
-.successMessage,
-.errorMessage,
-.validationMessage {
+.form {
   display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
 
-  align-items: flex-start;
 
-  gap: 13px;
+/* ===================================
+   FORM INPUTS
+=================================== */
 
-    margin: 0 0 2px;
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  min-width: 0;
+}
+
+.inputGroup label {
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #cfd3d8;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  display: block;
+
+  width: 100%;
+  min-width: 0;
 
   padding: 14px 15px;
 
-  border-radius: 9px;
+  font: inherit;
+  font-size: 13px;
 
-  animation: messageAppear 0.35s ease forwards;
+  background: #191d23;
+  color: #f1f1f1;
+
+  border: 1px solid #373d46;
+  border-radius: 7px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
-.successMessage {
-  border: 1px solid rgba(94, 220, 160, 0.2);
-
-  background: rgba(94, 220, 160, 0.055);
+.inputGroup input {
+  height: 48px;
 }
 
-.errorMessage {
-  border: 1px solid rgba(255, 107, 107, 0.2);
+.inputGroup textarea {
+  min-height: 145px;
+  resize: vertical;
 
-  background: rgba(255, 107, 107, 0.055);
+  line-height: 1.7;
 }
 
-.validationMessage {
-  border: 1px solid rgba(255, 190, 90, 0.2);
-
-  background: rgba(255, 190, 90, 0.055);
+.inputGroup input::placeholder,
+.inputGroup textarea::placeholder {
+  color: #777f8a;
 }
 
-.messageIcon {
+.inputGroup input:hover,
+.inputGroup textarea:hover {
+  border-color: #555e69;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus {
+  border-color: #aab7c5;
+  background: #1c2128;
+}
+
+.inputGroup input:disabled,
+.inputGroup textarea:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+/* ===================================
+   FORM FOOTER
+=================================== */
+
+.formFooter {
   display: flex;
-
   align-items: center;
+  justify-content: space-between;
 
+  gap: 20px;
+}
+
+.formFooter p {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.7;
+
+  color: #929aa4;
+}
+
+.submitButton {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-
-  width: 27px;
-  height: 27px;
+  gap: 14px;
 
   flex-shrink: 0;
 
-  border-radius: 50%;
+  min-height: 46px;
+  padding: 13px 20px;
 
+  background: #f0f0f0;
+  color: #111111;
+
+  border: 1px solid #f0f0f0;
+  border-radius: 7px;
+
+  font: inherit;
   font-size: 12px;
+  font-weight: 650;
 
-  font-weight: 600;
+  cursor: pointer;
+
+  transition: background 0.2s ease;
 }
 
-.successMessage .messageIcon {
-  border: 1px solid rgba(94, 220, 160, 0.3);
-
-  background: rgba(94, 220, 160, 0.09);
-
-  color: #8de7b7;
+.submitButton:hover:not(:disabled) {
+  background: #d7dade;
 }
 
-.errorMessage .messageIcon,
-.validationMessage .messageIcon {
-  border: 1px solid rgba(255, 150, 150, 0.25);
-
-  background: rgba(255, 150, 150, 0.08);
-
-  color: #ff9292;
+.submitButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
-.validationMessage .messageIcon {
-  border-color: rgba(255, 200, 110, 0.3);
 
-  background: rgba(255, 200, 110, 0.08);
+/* ===================================
+   FORM MESSAGES
+=================================== */
 
-  color: #ffc875;
+.successMessage,
+.errorMessage {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+
+  padding: 17px 18px;
+
+  border-radius: 7px;
 }
 
-.messageLabel {
+.successMessage {
+  background: #15241a;
+  border: 1px solid #34543c;
+
+  color: #a9d6b5;
+}
+
+.errorMessage {
   display: block;
 
-  margin-bottom: 3px;
+  background: #29191b;
+  border: 1px solid #613c40;
 
-  font-size: 9px;
+  color: #e8aaae;
+}
 
+.successMessage svg {
+  flex-shrink: 0;
+}
+
+.successMessage strong,
+.errorMessage strong {
+  font-size: 13px;
   font-weight: 600;
-
-  letter-spacing: 0.09em;
-
-  text-transform: uppercase;
-}
-
-.successMessage .messageLabel {
-  color: #8de7b7;
-}
-
-.errorMessage .messageLabel {
-  color: #ff9292;
-}
-
-.validationMessage .messageLabel {
-  color: #ffc875;
 }
 
 .successMessage p,
-.errorMessage p,
-.validationMessage p {
-  margin: 0;
+.errorMessage p {
+  margin: 5px 0 0;
 
-  font-size: 11px;
-
-  line-height: 1.55;
-
-  color: #7f8b99;
+  font-size: 12px;
+  line-height: 1.7;
 }
 
-@keyframes messageAppear {
-  from {
-    opacity: 0;
 
-    transform: translateY(-6px);
-  }
+/* ===================================
+   LOADING SPINNER
+=================================== */
 
+.spinner {
+  width: 15px;
+  height: 15px;
+
+  border: 2px solid #999;
+  border-top-color: #111;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
   to {
-    opacity: 1;
-
-    transform: translateY(0);
+    transform: rotate(360deg);
   }
 }
 
-/* =================================
-   BOTTOM
-================================= */
+
+/* ===================================
+   SECTION BOTTOM
+=================================== */
 
 .bottom {
   display: flex;
-
   align-items: center;
-
-  gap: 18px;
+  gap: 17px;
 
   margin-top: 65px;
 }
 
-.line {
-  width: 45px;
-
+.bottomLine {
   height: 1px;
+  flex: 1;
 
-  background: #5ea7ff;
+  background: #2a2e35;
 }
 
-.bottom p {
-  margin: 0;
-
-  font-size: 10px;
-
-  letter-spacing: 0.04em;
-
-  color: #697686;
+.bottom > span:nth-child(2) {
+  font-size: 12px;
+  color: #939aa4;
 }
 
-/* =================================
+.bottom svg {
+  color: #a0a6af;
+}
+
+
+/* ===================================
    TABLET
-================================= */
+=================================== */
 
-@media (max-width: 850px) {
-  .header {
-    grid-template-columns: 1fr;
-
-    gap: 20px;
-  }
-
-  .contactGrid {
-    grid-template-columns: 1fr;
-
-    gap: 65px;
-  }
-
-  .formWrapper {
-    padding: 32px;
-  }
-}
-
-/* =================================
-   MOBILE
-================================= */
-
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .contact {
     padding: 90px 0 70px;
   }
 
-  .container {
-    width: calc(100% - 32px);
+  .sectionHeader {
+    grid-template-columns: 145px 1fr;
+    gap: 20px;
   }
 
-  .header {
-    margin-bottom: 55px;
+  .emailCard {
+    padding: 34px;
   }
 
-  .label {
-    font-size: 9px;
+  .emailContent {
+    margin-top: 40px;
   }
 
-  .headingContent h2 {
-    font-size: clamp(42px, 12.5vw, 60px);
-
-    line-height: 1.02;
-
-    letter-spacing: -0.055em;
-  }
-
-  .headingContent p {
-    margin-top: 20px;
-
-    font-size: 13px;
-
-    line-height: 1.75;
-  }
-
-  .contactGrid {
-    gap: 48px;
-
-    padding-top: 32px;
-  }
-
-  .intro {
-    padding-top: 0;
-  }
-
-  .introLabel {
-    margin-bottom: 20px;
-
-    font-size: 8px;
-  }
-
-  .intro h3 {
-    font-size: 29px;
-  }
-
-  .intro > p {
-    margin: 22px 0 30px;
-
-    font-size: 12px;
-
-    line-height: 1.75;
-  }
-
-  .email {
-    width: 100%;
-
-    padding-bottom: 13px;
-
-    font-size: 12px;
-  }
-
-  .socials {
-    gap: 22px;
-
-    margin-top: 25px;
-  }
-
-  .socials a {
-    font-size: 10px;
-  }
-
-  /* =================================
-     FORM
-  ================================= */
-
-  .formWrapper {
-    padding: 22px;
-
-    border-radius: 13px;
-  }
-
-  .form {
-    gap: 27px;
-  }
-
-  .inputGroup {
-    gap: 9px;
-  }
-
-  .inputGroup label {
-    font-size: 8px;
-  }
-
-  .inputGroup input,
-  .inputGroup textarea {
-    padding: 12px 0;
-
-    font-size: 13px;
-  }
-
-  .inputGroup textarea {
-    min-height: 105px;
-  }
-
-  .submitButton {
-    min-height: 46px;
-
-    padding: 14px 16px;
-
-    font-size: 11px;
-  }
-
-  /* =================================
-     STATUS MESSAGE
-  ================================= */
-
-  .successMessage,
-  .errorMessage,
-  .validationMessage {
-    gap: 10px;
-
-    margin: -3px 0 0;
-
-    padding: 12px;
-  }
-
-  .messageIcon {
-    width: 25px;
-    height: 25px;
-
-    font-size: 11px;
-  }
-
-  .messageLabel {
-    font-size: 8px;
-  }
-
-  .successMessage p,
-  .errorMessage p,
-  .validationMessage p {
-    font-size: 10px;
-
-    line-height: 1.5;
-  }
-
-  .bottom {
-    align-items: flex-start;
-
-    gap: 12px;
-
-    margin-top: 45px;
-  }
-
-  .line {
-    flex-shrink: 0;
-
-    width: 32px;
-
-    margin-top: 6px;
-  }
-
-  .bottom p {
-    font-size: 9px;
-
-    line-height: 1.6;
+  .methodCard {
+    padding: 24px;
   }
 }
 
-/* =================================
-   SMALL PHONES
-================================= */
 
-@media (max-width: 380px) {
+/* ===================================
+   MOBILE
+=================================== */
+
+@media (max-width: 768px) {
   .contact {
     padding: 75px 0 60px;
   }
 
   .container {
+    width: calc(100% - 36px);
+  }
+
+  /* Header */
+
+  .sectionHeader {
+    display: block;
+    margin-bottom: 35px;
+  }
+
+  .sectionNumber {
+    padding: 0;
+    margin-bottom: 22px;
+  }
+
+  .heading h2 {
+    font-size: clamp(37px, 7vw, 48px);
+    letter-spacing: -1.8px;
+  }
+
+  .heading p {
+    margin-top: 19px;
+
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  /* Email Card */
+
+  .emailCard {
+    padding: 28px;
+  }
+
+  .emailContent {
+    margin-top: 35px;
+  }
+
+  .emailContent h3 {
+    font-size: 30px;
+  }
+
+  .emailAddress {
+    font-size: clamp(18px, 4vw, 26px);
+  }
+
+  .emailBottom {
+    margin-top: 30px;
+  }
+
+  /* Other Contacts */
+
+  .otherContactHeader {
+    margin-top: 45px;
+  }
+
+  .contactMethods {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .methodCard {
+    min-height: auto;
+    padding: 25px;
+  }
+
+  .methodContent {
+    margin-top: 23px;
+  }
+
+  .methodBottom {
+    margin-top: 25px;
+  }
+
+  /* Message Section */
+
+  .messageSection {
+    margin-top: 55px;
+    padding-top: 30px;
+  }
+
+  .messageSectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .messageSectionHeader h3 {
+    font-size: 23px;
+  }
+
+  .formToggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .formContainer {
+    padding: 25px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .formFooter {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}
+
+
+/* ===================================
+   SMALL MOBILE
+=================================== */
+
+@media (max-width: 480px) {
+  .container {
     width: calc(100% - 28px);
   }
 
-  .headingContent h2 {
-    font-size: 39px;
+  .heading h2 {
+    font-size: 37px;
   }
 
-  .intro h3 {
+  .emailCard {
+    padding: 24px 20px;
+  }
+
+  .emailIcon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .preferredBadge {
+    padding: 8px 10px;
+
+    font-size: 10px;
+  }
+
+  .emailContent {
+    margin-top: 31px;
+  }
+
+  .emailContent h3 {
     font-size: 27px;
   }
 
-  .formWrapper {
-    padding: 18px;
+  .emailAddress {
+    font-size: clamp(16px, 4.3vw, 21px);
+    gap: 7px;
+    letter-spacing: -0.5px;
   }
 
-  .form {
-    gap: 24px;
+  .emailAddress svg {
+    width: 18px;
+    height: 18px;
   }
 
-  .successMessage,
-  .errorMessage,
-  .validationMessage {
-    padding: 10px;
+  .emailBottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
   }
 
-  .successMessage p,
-  .errorMessage p,
-  .validationMessage p {
-    font-size: 9px;
+  .emailButton {
+    width: 100%;
+  }
+
+  .otherContactHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .methodCard {
+    padding: 22px;
+  }
+
+  .formContainer {
+    padding: 20px;
+  }
+
+  .bottom {
+    gap: 10px;
+  }
+
+  .bottom > span:nth-child(2) {
+    font-size: 10px;
+  }
+}
+
+
+/* ===================================
+   ACCESSIBILITY
+=================================== */
+
+.emailAddress:focus-visible,
+.emailButton:focus-visible,
+.methodLink:focus-visible,
+.formToggle:focus-visible,
+.submitButton:focus-visible {
+  outline: 2px solid #c5d4e2;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .emailCard,
+  .emailAddress,
+  .emailButton,
+  .methodCard,
+  .methodLink,
+  .formToggle,
+  .formToggle svg,
+  .submitButton {
+    transition: none;
+  }
+
+  .emailButton:hover {
+    transform: none;
+  }
+
+  .spinner {
+    animation: none;
   }
 }
