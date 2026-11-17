@@ -11,11 +11,22 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
 
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# The Neon CLI writes DATABASE_URL to .env or .env.local in the project root.
+# Production environment variables take precedence over local env files.
+for env_path in (
+    BASE_DIR.parent / ".env",
+    BASE_DIR.parent / ".env.local",
+    BASE_DIR / ".env",
+    BASE_DIR / ".env.local",
+):
+    load_dotenv(env_path, override=False)
 
 
 # Quick-start development settings - unsuitable for production
